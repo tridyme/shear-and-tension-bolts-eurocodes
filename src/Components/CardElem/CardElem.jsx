@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
-    transform: 'scale(0.8)',
+    transform: 'scale(0.5)',
   },
   title: {
 		fontSize: 23,
@@ -47,6 +47,7 @@ const CardElem = ({
 		<Card
 			className={classes.card}
 			elevation={3}
+			style={{backgroundColor: '#e0e0e0'}}
 		>
 			<CardHeader
 				// action={

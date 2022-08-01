@@ -5,7 +5,8 @@ import {
   Input,
   InputLabel,
   InputAdornment,
-  FormControl
+  FormControl,
+  TextField,
 } from '@material-ui/core';
 import ToolTips from '../ToolTips';
 // import './InputElem.css';
@@ -14,24 +15,28 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    background: '#e0e0e0',
+   
+   
   },
   margin: {
     margin: theme.spacing(1),
   },
-  // withoutLabel: {
-  //   marginTop: theme.spacing(3),
-  // },
-  // textField: {
-  //   width: '25ch',
-  // },
+
+  textField: {
+    width: "90%",
+  },
   input: {
     color: 'blue',
-    // backgroundColor: 'lightblue'
+    textAlign: "right", 
+    backgroundColor: "#e0e0e0"
   },
   inputAdornment: {
     // paddingRight: '1em',
     color: 'black'
-  }
+  },
+
+  
 }));
 
 const InputElem = ({
@@ -45,13 +50,14 @@ const InputElem = ({
   return (
     <div className={classes.root}>
       <FormControl
-        className={clsx(classes.margin, classes.withoutLabel, classes.textField)}
+        className={clsx(classes.margin, classes.withoutLabel, classes.textField,)}
       // variant="outlined"
       >
         <InputLabel htmlFor="outlined-adornment-amount">{description}</InputLabel>
         <Input
           className={onChange && classes.input}
           value={value}
+          classes={{input: classes.input}}
           startAdornment={text &&
             <InputAdornment
               position="start"
@@ -68,6 +74,7 @@ const InputElem = ({
           endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
           onChange={onChange}
         />
+        
       </FormControl>
     </div>
   );

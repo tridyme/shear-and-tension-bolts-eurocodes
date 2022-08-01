@@ -8,13 +8,14 @@ import {
 import './App.css';
 import history from './history';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createMuiTheme,} from '@material-ui/core/styles';
 import AppContainerElem from './Components/AppContainerElem';
 import {
   ListItem,
   ListItemAvatar,
   Avatar,
-  ListItemText
+  ListItemText,
+  Typography
 } from '@material-ui/core';
 import Icon from './Icon.svg';
 import Logo from './Logo.png';
@@ -53,10 +54,10 @@ const App = () => {
             //contrastText: '#ffcc00',
           },
         },
+        
       }),
     [prefersDarkMode],
   );
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -69,11 +70,11 @@ const App = () => {
           title={<ListItem>
             <ListItemAvatar>
               <Avatar
-                alt={`Section Geometry`}
+                alt={`Bolt analysis under combined shear and tension`}
                 src={Icon}
               />
             </ListItemAvatar>
-            <ListItemText primary={`Section Geometry`} />
+            <ListItemText primary={`Bolt analysis under combined shear and tension`} />
           </ListItem>}
           menu={Menu}
         >
