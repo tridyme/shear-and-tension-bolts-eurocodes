@@ -10,26 +10,50 @@ import calculations from './calculations';
 
 function SectionAnalysis() {
   const [values, setValues] = useState({
-    eOne: 50,         // Inputs: Largeur du rectangle
-    eTwo: 80,         // Inputs: Hauteur du rectangle
-    pOne: 100,         // Outputs: Surface du rectangle
-    pTwo: 50,      // Outputs: Inertie du rectangle suivant X
     
-    
+    // Geometry 
+    eOne: 50,       
+    eTwo: 80,         
+    pOne: 100,        
+    pTwo: 50,      
     tp: 8,
-   
+    d : 8,
+    D : 10,
+    As : 36.6, 
+    LocationType : 1,
+    LocationTypeTwo : 1,
+
+    // Material
+    BoltClass : 1 ,
+    GammaTwo : 1 ,
     fub : 400, 
     fu : 360,
 
-    BoltClass : 1 ,
-    GammaTwo : 1 ,
+    FtEd : 5,
+    FvEd : 5,
 
-    FtEd : 10,
-    FvEd : 10 ,
+    // Results
 
-    LocationType : 1,
-    LocationTypeTwo : 1,
-  
+    SfFv : 0.57,
+    SfFb : 0.09,
+    SfFt : 0.38, 
+    SfBp : 0.07, 
+    SfFvFt : 0.84, 
+
+    // Complementary Calculations 
+
+    FtRd : 13.18,
+    FbRd : 57.60,
+    FvRd : 8.78, 
+    BpRd : 76.00, 
+    dM : 14,
+    alphaV : 0.60,
+    alphaD :1.85,
+    alphaB : 1.00,
+    kOne : 2.50,
+    kTwo : 0.90,
+
+    
   });
 
   const handleChangeValues = (prop) => (event) => {
