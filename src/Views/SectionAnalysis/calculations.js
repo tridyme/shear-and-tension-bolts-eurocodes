@@ -1,34 +1,10 @@
 const Data ={
-    "1": {
-      "Size": 0,
-      "d": 0,
-      "s": 0,
-      "As ": 0
-  },
-  "2": {
-    "Size": 0,
-    "d": 0,
-    "s": 0,
-    "As": 0
-  },
-  "3": {
-    "Size": 0,
-    "d": 0,
-    "s": 0,
-    "As": 0
-  },
-  "4": {
-    "Size": 0,
-    "d": 0,
-    "s": 0,
-    "As": 0
-  },
-  "9": {
-    "Size": 0,
-    "d": 0,
-    "s": 0,
-    "As": 0
-  },
+  "1": {
+    "Size": 5.00,
+    "d": 5.00,
+    "s": 8.00,
+    "As": 14.2
+  },  
   "5": {
       "Size": 5.00,
       "d": 5.00,
@@ -48,16 +24,22 @@ const Data ={
       "As": 28.9
   },
   "8": {
-      "Size": 8.00,
+      "Size": 8.0,
       "d": 8.00,
       "s": 13.00,
-      "As": 36.60
+      "As": 36.60,
   },
   "10": {
       "Size": 10.00,
       "d": 10.00,
       "s": 16.00,
-      "As": 58.00
+      "As": 58.0,
+  },
+  "11": {
+    "Size": 10.00,
+    "d": 10.00,
+    "s": 16.00,
+    "As": 58.0,
   },
   "12": {
       "Size": 12.00,
@@ -84,51 +66,51 @@ const Data ={
       "As": 192.00
   },
   "20": {
-      "Size": "20.00",
-      "d": "20.00",
-      "s": "30.00",
+      "Size": 20.00,
+      "d": 20.00,
+      "s": 30.00,
       "As": 245.00
   },
   "22": {
-      "Size": "22.00",
-      "d": "22.00",
-      "s": "34.00",
+      "Size": 22.00,
+      "d": 22.00,
+      "s": 34.00,
       "As": 303.00
   },
   "24": {
-      "Size": "24.00",
-      "d": "24.00",
-      "s": "36.00",
+      "Size": 24.00,
+      "d": 24.00,
+      "s": 36.00,
       "As": 353.00
   },
   "27": {
-      "Size": "27.00",
-      "d": "27.00",
-      "s": "41.00",
+      "Size": 27.00,
+      "d": 27.00,
+      "s": 41.00,
       "As": 459.00
   },
   "30": {
-      "Size": "30.00",
-      "d": "30.00",
-      "s": "46.00",
+      "Size": 30.00,
+      "d": 30.00,
+      "s": 46.00,
       "As": 561.00
   },
   "33": {
-      "Size": "33",
-      "d": "33",
-      "s": "50",
+      "Size": 33,
+      "d": 33,
+      "s": 50,
       "As": 694
   },
   "36": {
-      "Size": "36",
-      "d": "36",
-      "s": "55",
+      "Size": 36,
+      "d": 36,
+      "s": 55,
       "As": 817
   },
   "39": {
-      "Size": "39",
-      "d": "39",
-      "s": "60",
+      "Size": 39,
+      "d": 39,
+      "s": 60,
       "As": 976
   }
 };
@@ -137,14 +119,14 @@ const calculations = {
   // OUTPUTS
   outputs: (inputs) => {
     return {
+
+      
       alphaV : calculations.alphaV(inputs),
       alphaD : calculations.alphaD(inputs),
       alphaB : calculations.alphaB(inputs),
       kOne : calculations.kOne(inputs),
-      kTwo : calculations.kTwo(inputs),
-      
-      
-
+      kTwo : calculations.kTwo(inputs), 
+    
       D : calculations.D(inputs),
       dM : calculations.dM(inputs),
       As : calculations.As(inputs),
@@ -163,6 +145,8 @@ const calculations = {
     }
   }, // NE PAS OUBLIER LA VIRGULE
   // CALCULATION FUNCTIONS
+
+  
   alphaV: (inputs) => {
     const {
       BoltClass,
@@ -194,11 +178,11 @@ const calculations = {
     // LocationType == 2 for Inner Bolts
     
     if (LocationType == 1 ) {
-      return Math.min(2.8*eTwo/D-1.7,1.4*pTwo/D-1.7,2.5);
+      return (Math.min(2.8*eTwo/D-1.7,1.4*pTwo/D-1.7,2.5));
     }
 
     if (LocationType == 2 ) {
-      return Math.min(1.4*pTwo/D-1.7,2.5);
+      return (Math.min(1.4*pTwo/D-1.7,2.5));
     }
 
   }, // NE PAS OUBLIER LA VIRGULE
@@ -213,18 +197,18 @@ const calculations = {
      LocationType,
      eOne,
      pOne,
-     D, 
+     D,
 
     } = inputs;
 
     
     if (LocationType == 1 ) {
-      return eOne/(3*D);
+      return (eOne/(3*D));
 
     }
 
     if (LocationType == 2 ) {
-      return pOne/(3*D)-1/4;
+      return (pOne/(3*D)-1/4);
     }
 
   }, // NE PAS OUBLIER LA VIRGULE
@@ -237,16 +221,17 @@ const calculations = {
 
     } = inputs;
 
-    return  Math.min(alphaD,fub/fu,1);
+    return  (Math.min(alphaD,fub/fu,1));
   
   }, // NE PAS OUBLIER LA VIRGULE
+
 
   D: (inputs) => {
     const {
      d
     } = inputs;
 
-    return  d+2;
+    return  (d+2);
   
   }, // NE PAS OUBLIER LA VIRGULE
   
@@ -255,7 +240,7 @@ const calculations = {
      d
     } = inputs;
 
-    return  1.07735*Data[String(d)]["s"];
+    return  1.07735*Data[d]["s"];
   
   }, // NE PAS OUBLIER LA VIRGULE
 
@@ -265,7 +250,7 @@ const calculations = {
      d
     } = inputs;
 
-    return  Data[String(d)]["As"];
+    return  Data[d]["As"];
   
   }, // NE PAS OUBLIER LA VIRGULE
 
@@ -275,10 +260,9 @@ const calculations = {
       fub,
       As,
       GammaTwo,
-      d,
     } = inputs;
 
-    return alphaV*fub*As/GammaTwo/1000;
+    return (alphaV*fub*As/GammaTwo/1000);
   }, // NE PAS OUBLIER LA VIRGULE
 
   
@@ -301,9 +285,10 @@ const calculations = {
       fu,
       d,
       tp,
+      
     } = inputs;
 
-    return kOne*alphaB*fu*d*tp/1000;
+    return (kOne*alphaB*fu*d*tp/1000);
   }, // NE PAS OUBLIER LA VIRGULE
 
   BpRd: (inputs) => {
@@ -314,7 +299,7 @@ const calculations = {
       GammaTwo,
     } = inputs;
 
-    return 0.6*Math.PI*dM*tp*fu/GammaTwo/1000;
+    return (0.6*Math.PI*dM*tp*fu/GammaTwo/1000);
   }, // NE PAS OUBLIER LA VIRGULE
   
   SfFv: (inputs) => {
@@ -323,7 +308,7 @@ const calculations = {
       FvRd,
     } = inputs;
 
-    return FvEd/FvRd;
+    return (FvEd/FvRd);
   }, // NE PAS OUBLIER LA VIRGULE
 
   
@@ -333,7 +318,7 @@ const calculations = {
       FbRd
     } = inputs;
 
-    return FvEd/FbRd;
+    return (FvEd/FbRd);
   }, // NE PAS OUBLIER LA VIRGULE
 
   
@@ -343,7 +328,7 @@ const calculations = {
       FtRd,
     } = inputs;
 
-    return FtEd/FtRd;
+    return (FtEd/FtRd);
   }, // NE PAS OUBLIER LA VIRGULE
     
   SfBp: (inputs) => {
@@ -352,7 +337,7 @@ const calculations = {
       BpRd,
     } = inputs;
 
-    return FtEd/BpRd;
+    return (FtEd/BpRd);
   }, // NE PAS OUBLIER LA VIRGULE
   
   SfFvFt: (inputs) => {
@@ -363,10 +348,10 @@ const calculations = {
       FvRd
     } = inputs;
 
-    return FvEd/FvRd + FtEd/(1.4*FtRd);
+    return (FvEd/FvRd + FtEd/(1.4*FtRd));
   }, // NE PAS OUBLIER LA VIRGULE
+  
 
 }
-
 
 export default calculations;
