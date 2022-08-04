@@ -1,10 +1,4 @@
-const Data ={
-  "1": {
-    "Size": 5.00,
-    "d": 5.00,
-    "s": 8.00,
-    "As": 14.2
-  },  
+const Data ={  
   "5": {
       "Size": 5.00,
       "d": 5.00,
@@ -35,12 +29,7 @@ const Data ={
       "s": 16.00,
       "As": 58.0,
   },
-  "11": {
-    "Size": 10.00,
-    "d": 10.00,
-    "s": 16.00,
-    "As": 58.0,
-  },
+
   "12": {
       "Size": 12.00,
       "d": 12.00,
@@ -144,8 +133,8 @@ const calculations = {
       
     }
   }, // NE PAS OUBLIER LA VIRGULE
+  
   // CALCULATION FUNCTIONS
-
   
   alphaV: (inputs) => {
     const {
@@ -197,11 +186,11 @@ const calculations = {
      LocationType,
      eOne,
      pOne,
-     D,
-
+     
     } = inputs;
 
-    
+    const D = calculations.D(inputs);
+
     if (LocationType == 1 ) {
       return (eOne/(3*D));
 
@@ -217,9 +206,10 @@ const calculations = {
     const {
      fub,
      fu,
-     alphaD
 
     } = inputs;
+
+    const alphaD = calculations.alphaD(inputs);
 
     return  (Math.min(alphaD,fub/fu,1));
   
@@ -256,12 +246,13 @@ const calculations = {
 
   FvRd: (inputs) => {
     const {
-      alphaV,
       fub,
-      As,
       GammaTwo,
     } = inputs;
 
+    const As = calculations.As(inputs); 
+    const alphaV = calculations.alphaV(inputs); 
+    
     return (alphaV*fub*As/GammaTwo/1000);
   }, // NE PAS OUBLIER LA VIRGULE
 
@@ -270,9 +261,10 @@ const calculations = {
     const {
       kTwo,
       fub,
-      As,
       GammaTwo,
     } = inputs;
+
+    const As = calculations.As(inputs); 
 
     return kTwo*fub*As/GammaTwo/1000;
   }, // NE PAS OUBLIER LA VIRGULE
@@ -280,24 +272,27 @@ const calculations = {
   
   FbRd: (inputs) => {
     const {
-      kOne,
-      alphaB,
       fu,
       d,
       tp,
       
     } = inputs;
 
+    const kOne = calculations.kOne(inputs);
+    const alphaB = calculations.alphaB(inputs);
+
     return (kOne*alphaB*fu*d*tp/1000);
   }, // NE PAS OUBLIER LA VIRGULE
 
   BpRd: (inputs) => {
     const {
-      dM,
+      
       tp,
       fu,
       GammaTwo,
     } = inputs;
+    
+    const dM = calculations.dM(inputs);
 
     return (0.6*Math.PI*dM*tp*fu/GammaTwo/1000);
   }, // NE PAS OUBLIER LA VIRGULE
@@ -305,8 +300,9 @@ const calculations = {
   SfFv: (inputs) => {
     const {
       FvEd,
-      FvRd,
     } = inputs;
+
+    const FvRd = calculations.FvRd(inputs);
 
     return (FvEd/FvRd);
   }, // NE PAS OUBLIER LA VIRGULE
@@ -315,9 +311,9 @@ const calculations = {
   SfFb: (inputs) => {
     const {
       FvEd,
-      FbRd
     } = inputs;
 
+    const FbRd = calculations.FbRd(inputs);
     return (FvEd/FbRd);
   }, // NE PAS OUBLIER LA VIRGULE
 
@@ -325,8 +321,9 @@ const calculations = {
   SfFt: (inputs) => {
     const {
       FtEd,
-      FtRd,
     } = inputs;
+    
+    const FtRd = calculations.FtRd(inputs);
 
     return (FtEd/FtRd);
   }, // NE PAS OUBLIER LA VIRGULE
@@ -334,19 +331,20 @@ const calculations = {
   SfBp: (inputs) => {
     const {
       FtEd,
-      BpRd,
     } = inputs;
 
+    const BpRd = calculations.BpRd(inputs);
     return (FtEd/BpRd);
   }, // NE PAS OUBLIER LA VIRGULE
   
   SfFvFt: (inputs) => {
     const {
       FtEd,
-      FtRd,
       FvEd,
-      FvRd
     } = inputs;
+
+    const FtRd = calculations.FtRd(inputs);
+    const FvRd = calculations.FvRd(inputs);
 
     return (FvEd/FvRd + FtEd/(1.4*FtRd));
   }, // NE PAS OUBLIER LA VIRGULE

@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import {
-  Grid
+  FormControl,
+  Grid,
+  MenuItem,
+  Select,
+  InputLabel,
+  TextField,
+
 } from '@material-ui/core';
 import CardElem from '../../Components/CardElem';
 import InputElem from '../../Components/InputElem';
@@ -79,61 +85,79 @@ function SectionAnalysis() {
         >
           <InputElem
             value={values.eOne}
-            text={'Distance along load direction - e1'}
-            // description={'Distance along load direction'}
+            text={'e1'}
+            description={'Distance along load direction'}
             unit={'mm'}
             onChange={handleChangeValues('eOne')}
             
           />
           <InputElem
             value={values.eTwo}
-            text={'Distance perpendicular to load direction - e2'}
-            // description={'Distance perpendicular to load direction'}
+            text={'e2'}
+            description={'Distance perpendicular to load direction'}
             unit={'mm'}
             onChange={handleChangeValues('eTwo')}
             />
           <InputElem
             value={values.pOne}
-            text={'Center-to-center spacing along load direction - p1'}
-            // description={'Center-to-center spacing along load direction'}
+            text={'p1'}
+            description={'Center-to-center spacing along load direction'}
             unit={'mm'}
             onChange={handleChangeValues('pOne')}
           />
           <InputElem
             value={values.pTwo}
-            text={'Center-to-center spacing perpendicular to load direction - p2'}
-            // description={'Center-to-center spacing perpendicular to load direction'}
+            text={'p2'}
+            description={'Center-to-center spacing perpendicular to load direction'}
             unit={'mm'}
             onChange={handleChangeValues('pTwo')}
           />
           <InputElem
             value={values.LocationType}
-            text={'Bolt location along load direction - 1 : Edge bolts / 2: Inner bolts'}
-            // description={'Bolt location along load direction'}
+            text={'LocationType'}
+            description={'1 for Edge bolts / 2 for Inner bolts'}
             unit={''}
             onChange={handleChangeValues('LocationType')}
           /> 
           <InputElem
             value={values.LocationTypeTwo}
-            text={'Bolt location perpendicular to load direction - 1 : Edge bolts / 2: Inner bolts'}
-            // description={'Bolt location perpendicular to load direction'}
+            text={'LocationTypeTwo'}
+            description={' 1 for Edge bolts / 2 for Inner bolts'}
             unit={''}
             onChange={handleChangeValues('LocationTypeTwo')}
           />
           <InputElem
             value={values.tp}
-            text={'Thickness of the connected plate - tp'}
-            // description={'Thickness of the connected plate'}
+            text={'tp'}
+            description={'Thickness of the connected plate'}
             unit={'mm'}
             onChange={handleChangeValues('tp')}
           />
-          <InputElem
-            value={values.d}
-            text={'Diameter of the bolt - d'}
-            // description={'Diameter of the bolt'}
-            unit={'mm'}
-            onChange={handleChangeValues('d')}
-          />  
+          <FormControl style={{minWidth: 1080}} >
+            <InputLabel id = "demo-simple-semect-label">Diameter of the bolt (mm)</InputLabel>
+            <Select
+              value={values.d}
+              onChange={handleChangeValues('d')}
+            >
+              <MenuItem value = {5}>5</MenuItem> 
+              <MenuItem value = {6}>6</MenuItem>
+              <MenuItem value = {7}>7</MenuItem>
+              <MenuItem value = {8}>8</MenuItem> 
+              <MenuItem value = {10}>10</MenuItem>
+              <MenuItem value = {12}>12</MenuItem>
+              <MenuItem value = {14}>14</MenuItem>
+              <MenuItem value = {16}>16</MenuItem>
+              <MenuItem value = {18}>18</MenuItem> 
+              <MenuItem value = {20}>20</MenuItem>
+              <MenuItem value = {22}>22</MenuItem>
+              <MenuItem value = {24}>24</MenuItem>
+              <MenuItem value = {27}>30</MenuItem>
+              <MenuItem value = {33}>33</MenuItem> 
+              <MenuItem value = {36}>36</MenuItem>
+              <MenuItem value = {39}>39</MenuItem>
+
+            </Select>
+          </FormControl> 
           <InputElem
             value={values.D}
             text={'D'}
@@ -144,7 +168,7 @@ function SectionAnalysis() {
           <InputElem
             value={values.As}
             text={'As'}
-            // description={'Stress area of the bolt'}
+            description={'Stress area of the bolt'}
             unit={'mm²'}
             onChange={handleChangeValues('As')}
           /> 
@@ -158,43 +182,43 @@ function SectionAnalysis() {
           >
           <InputElem
             value={values.BoltClass}
-            text={'Bolt class : 1 for 4.6/5.6/8.8 - 2 for 4.8/5.8/6.8/10.9'}
-            // description={'Bolt class'}
+            text={'BoltClass'}
+            description={'1 for 4.6/5.6/8.8 - 2 for 4.8/5.8/6.8/10.9'}
             unit={''}
             onChange={handleChangeValues('BoltClass')}
           />
           <InputElem
             value={values.GammaTwo}
-            text={'Partial safety factor for the resistance of bolts - yM2'}
-            // description={'Partial safety factor for the resistance of bolts'}
+            text={'yM2'}
+            description={'Partial safety factor for the resistance of bolts'}
             unit={''}
             onChange={handleChangeValues('GammaTwo')}
           />
           <InputElem
             value={values.fub}
-            text={'Ultimate tensile strength of the bolt - fub'}
-            // description={'Ultimate tensile strength of the bolt'}
+            text={'fub'}
+            description={'Ultimate tensile strength of the bolt'}
             unit={'MPa'}
             onChange={handleChangeValues('fub')}
           />
           <InputElem
             value={values.fu}
-            text={'Ultimate tensile strength of the connected plate - fu'}
-            // description={'Ultimate tensile strength of the connected plate'}
+            text={'fu'}
+            description={'Ultimate tensile strength of the connected plate'}
             unit={'MPa'}
             onChange={handleChangeValues('fu')}
           />
           <InputElem
             value={values.FtEd}
-            text={'Design tension force - FtEd'}
-            // description={'Design tension force'}
+            text={'FtEd'}
+            description={'Design tension force'}
             unit={'kN'}
             onChange={handleChangeValues('FtEd')}
             />
           <InputElem
             value={values.FvEd}
-            text={'Design shear force - FvEd'}
-            // description={'Design shear force'}
+            text={'FvEd'}
+            description={'Design shear force'}
             unit={'kN'}
             onChange={handleChangeValues('FvEd')}
         />
@@ -207,36 +231,36 @@ function SectionAnalysis() {
         >
         <InputElem
           value={values.SfFv}
-          text={'Safety factor for shear stress '}
-          // description={'Safety factor for shear stress'}
+          text={'SfFv'}
+          description={'Safety factor for shear stress'}
           unit={''}
           onChange={handleChangeValues('SfFv')}
         />
         <InputElem
           value={values.SfFb}
-          text={'Safety factor for bearing stress'}
-          // description={'Safety factor for bearing stress'}
+          text={'SfFb'}
+          description={'Safety factor for bearing stress'}
           unit={''}
-          onChange={handleChangeValues('SfFt')}
+          onChange={handleChangeValues('SfFb')}
         />
         <InputElem
           value={values.SfFt}
-          text={'Safety factor for tension stress'}
-          // description={'Safety factor for tension stress'}
+          text={'SfFt'}
+          description={'Safety factor for tension stress'}
           unit={''}
           onChange={handleChangeValues('SfFt')}
         />
         <InputElem
           value={values.SfBp}
-          text={'Safety factor for punching stress'}
-          // description={'Safety factor for punching stress'}
+          text={'SfBp'}
+          description={'Safety factor for punching stress'}
           unit={''}
           onChange={handleChangeValues('SfBp')}
         />
         <InputElem
           value={values.SfFvFt}
-          text={'Safety factor for combined shear and tension stress'}
-          // description={'Safety factor for combined shear and tension stress'}
+          text={'SfFvFt'}
+          description={'Safety factor for combined shear and tension stress'}
           unit={''}
           onChange={handleChangeValues('SfFvFt')}
         />
@@ -251,60 +275,66 @@ function SectionAnalysis() {
           <InputElem
             value={values.FtRd}
             text={'FtRd'}
-            // description={'Tensile strength:'}
+            description={'Tensile strength'}
             unit={'kN'}
             onChange={handleChangeValues('FtRd')}
           />
           <InputElem
             value={values.FvRd}
             text={'FvRd'}
-            // description={'Shear resistance:'}
+            description={'Shear resistance'}
             unit={'kN'}
             onChange={handleChangeValues('FvRd')}
           />
           <InputElem
             value={values.FbRd}
-            text={'Bearing strength:FbRd'}
-            // description={'Bearing strength:'}
+            text={'FbRd'}
+            description={'Bearing strength'}
             unit={'kN'}
             onChange={handleChangeValues('FbRd')}
           />
           <InputElem
             value={values.BpRd}
-            text={'Punching strength: BpRd'}
-            // description={'Punching strength:'}
+            text={'BpRd'}
+            description={'Punching strength'}
             unit={'kN'}
             onChange={handleChangeValues('BpRd')}
           />
           <InputElem
             value={values.alphaV}
             text={'alphaV'}
+            description={'Coefficient related to the bolt class'}
             onChange={handleChangeValues('alphaV')} 
           />
           <InputElem
             value={values.kOne}
             text={'k1'}
+            description={'Coefficient related to the bolt location'}
             onChange={handleChangeValues('kOne')} 
           />
           <InputElem
-          value={values.kTwo}
-          text={'k2'}
-          onChange={handleChangeValues('kTwo')} 
+            value={values.kTwo}
+            text={'k2'}
+            description={'Coefficient related to the bolt location'}
+            onChange={handleChangeValues('kTwo')} 
           />
           <InputElem
-          value={values.alphaD}
-          text={'alphaD'}
-          onChange={handleChangeValues('alphaD')} 
+            value={values.alphaD}
+            text={'alphaD'}
+            description={'Coefficient related to the bolt location'}
+            onChange={handleChangeValues('alphaD')} 
           />
           <InputElem
-          value={values.alphaB}
-          text={'alphaB'}
-          onChange={handleChangeValues('alphaB')} 
+            value={values.alphaB}
+            text={'alphaB'}
+            description={'Coefficient related to the bolt location'}
+            onChange={handleChangeValues('alphaB')} 
           />
           <InputElem
-          value={values.dM}
-          text={'dM'}
-          onChange={handleChangeValues('dM')} 
+            value={values.dM}
+            text={'dM'}
+            description={'Mean diameter of the bolt'}
+            onChange={handleChangeValues('dM')} 
           />
         </CardElem>
       </Grid>
