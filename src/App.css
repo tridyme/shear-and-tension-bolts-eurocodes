@@ -55,3 +55,10 @@
     transform: rotate(360deg);
   }
 }
+
+img {position: relative;
+  top: 55px;
+  left : 600px;
+
+}
+

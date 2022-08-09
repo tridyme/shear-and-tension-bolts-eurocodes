@@ -60,32 +60,37 @@ const App = () => {
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <Helmet>
-        <title>{`TriDyme | Applications`}</title>
-        <link rel="icon" type="image/png" href={Logo} sizes="16x16" />
-      </Helmet>
-      <Router history={history}>
-        <AppContainerElem
-          title={<ListItem>
-            <ListItemAvatar>
-              <Avatar
-                alt={`Bolt analysis under combined shear and tension`}
-                src={Icon}
-              />
-            </ListItemAvatar>
-            <ListItemText primary={`Bolt analysis under combined shear and tension`} />
-          </ListItem>}
-          menu={Menu}
-        >
-          <Switch>
-            <Route exact path="/" component={SectionAnalysis} />
-            <Route exact path="/home" component={SectionAnalysis} />
-          </Switch>
-        </AppContainerElem>
-      </Router>
-    </ThemeProvider>
+    <div>
+        <img src = "/images/entraxes_des_fixations.png" alt = ""/>
+      <ThemeProvider theme={theme}>
+        <Helmet>
+          <title>{`TriDyme | Applications`}</title>
+          <link rel="icon" type="image/png" href={Logo} sizes="16x16" />
+        </Helmet>
+        <Router history={history}>
+          <AppContainerElem
+            title={<ListItem>
+              <ListItemAvatar>
+                <Avatar
+                  alt={`Bolt analysis under combined shear and tension`}
+                  src={Icon}
+                />
+              </ListItemAvatar>
+              <ListItemText primary={`Bolt analysis under combined shear and tension`} />
+            </ListItem>}
+            menu={Menu}
+          >
+            <Switch>
+              <Route exact path="/" component={SectionAnalysis} />
+              <Route exact path="/home" component={SectionAnalysis} />
+            </Switch>
+          </AppContainerElem>
+        </Router>
+      </ThemeProvider>
+   </div>
+   
   );
+  
 };
 
 export default App;

@@ -142,12 +142,12 @@ const calculations = {
 
     } = inputs;
 
-    if (BoltClass == 1 || BoltClass == 3 || BoltClass == 6 ) {
+    if (BoltClass == 1 ) {
       return 0.6;
 
     }
     
-    if (BoltClass == 2 || BoltClass == 4  || BoltClass == 5 || BoltClass == 7  ) {
+    if (BoltClass == 2 ) {
       return 0.5;
 
     }
@@ -158,14 +158,13 @@ const calculations = {
      LocationType,
      eTwo,
      pTwo,
-     // D, 
+     D, 
 
     } = inputs;
 
     
     // LocationType == 1 for Edge Bolts
     // LocationType == 2 for Inner Bolts
-    const D = calculations.D(inputs);
     
     if (LocationType == 1 ) {
       return (Math.min(2.8*eTwo/D-1.7,1.4*pTwo/D-1.7,2.5));
