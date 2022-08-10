@@ -14,9 +14,14 @@ import {
 } from '@material-ui/core';
 import CardElem from '../../Components/CardElem';
 import InputElem from '../../Components/InputElem';
+import OutputElem from '../../Components/OutputElem';
+import ToolTips from '../../Components/ToolTips';
+import OutputDetails from '../../Components/OutputDetails';
 import ChartElem from '../../Components/ChartElem';
 import calculations from './calculations';
 import MathJax from 'react-mathjax';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 function SectionAnalysis() {
   const [values, setValues] = useState({
@@ -63,8 +68,12 @@ function SectionAnalysis() {
     kOne : 2.50,
     kTwo : 0.90,
 
+    OkNokSfFv : "OK",
+
     
   });
+
+  
 
   const handleChangeValues = (prop) => (event) => {
     const newValues = { ...values, [prop]: Number(event.target.value) };
@@ -77,6 +86,7 @@ function SectionAnalysis() {
     }
     setValues(updatedValues);
   };
+
 
   const [dialogOpenGammaTwo, setDialogOpenGammaTwo] = useState(false);
 
@@ -120,6 +130,7 @@ function SectionAnalysis() {
   const xThree = 3;
 
 
+ 
 
   return (
     <Grid container spacing={5} >
@@ -382,43 +393,6 @@ function SectionAnalysis() {
           </FormControl> 
           </Grid>
           </Grid>
-
-          <Grid container = {true}>
-          <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
-          <TextField
-            variant="outlined"
-            defaultValue={"Diameter of the bolt hole"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
-            style={{height: '48px', width: '600px', justifyContent: 'center'}}
-          />
-          </Grid>
-          <Grid item md = {xTwo}>
-          <InputElem
-            value={values.D}
-            unit={'mm'}
-            onChange={handleChangeValues('D')}
-          />
-          </Grid>
-          </Grid>
-
-          <Grid container = {true}>
-          <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
-          <TextField
-            variant="outlined"
-            defaultValue={"Stress area of the bolt : As"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
-            style={{height: '48px', width: '600px', justifyContent: 'center'}}
-            />
-          </Grid>
-          <Grid item md = {xTwo}> 
-          <InputElem
-            value={values.As}
-            unit={'mm²'}
-            onChange={handleChangeValues('As')}
-          /> 
-          </Grid>
-          </Grid>
-
           </CardElem>
           </Grid>
 
@@ -498,32 +472,6 @@ function SectionAnalysis() {
                 </DialogContent>
               </Dialog>
 
-            </Grid>
-          </Grid>
-        <Grid container = {true}>
-              
-          <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
-            <TextField
-              variant="outlined"
-              defaultValue={"Ultimate tensile strength of the bolt : fub"}
-              inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
-              style={{height: '48px', width: '600px', justifyContent: 'center'}}
-            />
-          </Grid>
-          <Grid item md = {xTwo}>
-            <InputElem
-              value={values.fub}
-              unit={'MPa'}
-              onChange={handleChangeValues('fub')}
-            />
-          </Grid>
-          <Grid item md ={xThree} alignItems="center" style={{ display: "flex" }} >
-            <TextField 
-              variant='outlined'
-              defaultValue={"Table 3.1"}
-              inputProps={{readOnly : true,style: {textAlign: 'center' }}}
-              style={{height: '48px',width: '600px',justifyContent: 'center'}}
-            />
             </Grid>
           </Grid>
         <Grid container = {true}>
@@ -608,17 +556,19 @@ function SectionAnalysis() {
             />
         </Grid>
       <Grid item md = {xTwo} >
-        
-        <InputElem
-          
+        <OutputElem
           value={values.SfFv}
           unit={''}
           onChange={handleChangeValues('SfFv')}
+          
         />
-     
+      </Grid>
+      <Grid item md = {xThree} > 
+      <ToolTips
+        value={values.SfFv}
+      /> 
       </Grid>
       </Grid>
-
       <Grid container = {true}>
       <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
@@ -630,7 +580,7 @@ function SectionAnalysis() {
         </Grid>
 
       <Grid item md = {xTwo}>
-        <InputElem
+        <OutputElem
           value={values.SfFb}
           unit={''}
           onChange={handleChangeValues('SfFb')}
@@ -638,6 +588,12 @@ function SectionAnalysis() {
 
         />
       </Grid>
+
+      <Grid item md = {xThree} > 
+        <ToolTips
+          value={values.SfFb}
+        /> 
+        </Grid>
       </Grid>
 
       <Grid container = {true}>
@@ -651,12 +607,18 @@ function SectionAnalysis() {
         </Grid>
         <Grid item md = {xTwo} >
           
-        <InputElem
+        <OutputElem
           value={values.SfFt}
           unit={''}
           onChange={handleChangeValues('SfFt')}
         />
         
+        </Grid>
+
+        <Grid item md = {xThree} > 
+        <ToolTips
+          value={values.SfFt}
+        /> 
         </Grid>
       </Grid>
 
@@ -671,11 +633,16 @@ function SectionAnalysis() {
         </Grid>
         <Grid item md = {xTwo}> 
 
-        <InputElem
+        <OutputElem
           value={values.SfBp}
           unit={''}
           onChange={handleChangeValues('SfBp')}
         />
+        </Grid>
+        <Grid item md = {xThree} > 
+        <ToolTips
+          value={values.SfBp}
+        /> 
         </Grid>
       </Grid>
 
@@ -689,11 +656,16 @@ function SectionAnalysis() {
             />
         </Grid>
         <Grid item md = {xTwo}>       
-        <InputElem
+        <OutputElem
           value={values.SfFvFt}
           onChange={handleChangeValues('SfFvFt')}
         />
        </Grid>
+       <Grid item md = {xThree} > 
+        <ToolTips
+          value={values.SfFvFt}
+        /> 
+        </Grid>
       </Grid>
         </CardElem>
       </Grid>
@@ -702,6 +674,69 @@ function SectionAnalysis() {
           title="Complementary calculations"
           subtitle=""
         >
+
+
+        <Grid container = {true}>
+          <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+          <TextField
+            variant="outlined"
+            defaultValue={"Diameter of the bolt hole"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            style={{height: '48px', width: '600px', justifyContent: 'center'}}
+          />
+          </Grid>
+          <Grid item md = {xTwo}>
+          <OutputDetails
+            value={values.D}
+            unit={'mm'}
+            onChange={handleChangeValues('D')}
+          />
+          </Grid>
+          </Grid>
+
+          <Grid container = {true}>
+          <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+          <TextField
+            variant="outlined"
+            defaultValue={"Stress area of the bolt : As"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            style={{height: '48px', width: '600px', justifyContent: 'center'}}
+            />
+          </Grid>
+          <Grid item md = {xTwo}> 
+          <OutputDetails
+            value={values.As}
+            unit={'mm²'}
+            onChange={handleChangeValues('As')}
+          /> 
+          </Grid>
+          </Grid>
+        <Grid container = {true}>
+            
+            <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+              <TextField
+                variant="outlined"
+                defaultValue={"Ultimate tensile strength of the bolt : fub"}
+                inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+                style={{height: '48px', width: '600px', justifyContent: 'center'}}
+              />
+            </Grid>
+            <Grid item md = {xTwo}>
+              <OutputDetails
+                value={values.fub}
+                unit={'MPa'}
+                onChange={handleChangeValues('fub')}
+              />
+            </Grid>
+            <Grid item md ={xThree} alignItems="center" style={{ display: "flex" }} >
+              <TextField 
+                variant='outlined'
+                defaultValue={"Table 3.1"}
+                inputProps={{readOnly : true,style: {textAlign: 'center' }}}
+                style={{height: '48px',width: '600px',justifyContent: 'center'}}
+              />
+              </Grid>
+          </Grid>
         < Grid container =  {true} >
 
         <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
@@ -714,10 +749,12 @@ function SectionAnalysis() {
         </Grid>
 
           <Grid item md = {xTwo}>
-          <InputElem
+          <OutputDetails
             value={values.FtRd}
             unit={'kN'}
             onChange={handleChangeValues('FtRd')}
+            
+            
           />
           </Grid>
           <Grid item md ={xThree} alignItems="center" style={{ display: "flex"}} >
@@ -754,7 +791,7 @@ function SectionAnalysis() {
         </Grid>
 
           <Grid item md = {xTwo}>
-          <InputElem
+          <OutputDetails
             value={values.FvRd}
             unit={'kN'}
             onChange={handleChangeValues('FvRd')}
@@ -793,7 +830,7 @@ function SectionAnalysis() {
             />
         </Grid>
           <Grid item md = {xTwo}> 
-          <InputElem
+          <OutputDetails
             value={values.FbRd}
             unit={'kN'}
             onChange={handleChangeValues('FbRd')}
@@ -833,7 +870,7 @@ function SectionAnalysis() {
             />
           </Grid>
           <Grid item md = {xTwo}> 
-          <InputElem
+          <OutputDetails
             value={values.BpRd}
             unit={'kN'}
             onChange={handleChangeValues('BpRd')}
@@ -872,7 +909,7 @@ function SectionAnalysis() {
             />
           </Grid>
           <Grid item md = {xTwo}>    
-          <InputElem
+          <OutputDetails
             value={values.alphaV}
             onChange={handleChangeValues('alphaV')} 
           />
@@ -907,7 +944,7 @@ function SectionAnalysis() {
             />
           </Grid>
           <Grid item md = {xTwo}>
-          <InputElem
+          <OutputDetails
             value={values.kOne}
             onChange={handleChangeValues('kOne')} 
           />
@@ -942,7 +979,7 @@ function SectionAnalysis() {
           </Grid>
 
           < Grid item md = {xTwo}>    
-          <InputElem
+          <OutputDetails
             value={values.kTwo}
             onChange={handleChangeValues('kTwo')} 
           />
@@ -978,7 +1015,7 @@ function SectionAnalysis() {
           </Grid>
 
           <Grid item md = {xTwo}>
-          <InputElem
+          <OutputDetails
             value={values.alphaD}
             onChange={handleChangeValues('alphaD')} 
           />
@@ -1013,7 +1050,7 @@ function SectionAnalysis() {
             />
           </Grid>
           <Grid item md = {xTwo} >
-          <InputElem
+          <OutputDetails
             value={values.alphaB}
             onChange={handleChangeValues('alphaB')} 
           />  
@@ -1047,7 +1084,7 @@ function SectionAnalysis() {
             />
           </Grid>
           <Grid item md = {xTwo}>
-          <InputElem
+          <OutputDetails
             value={values.dM}
             onChange={handleChangeValues('dM')} 
           />

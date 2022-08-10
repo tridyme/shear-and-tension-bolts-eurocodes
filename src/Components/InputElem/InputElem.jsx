@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     color: 'black',
     textAlign: "center", 
     backgroundColor: "white",
-    textAlign: 'center',
+    
 
   },
   inputAdornment: {
@@ -50,6 +50,7 @@ const InputElem = ({
   onChange
 }) => {
   const classes = useStyles();
+  
   return (
     <div className={classes.root}>
       

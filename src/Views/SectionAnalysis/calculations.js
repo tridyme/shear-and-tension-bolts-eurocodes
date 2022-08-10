@@ -130,6 +130,10 @@ const calculations = {
       SfFt : calculations.SfFt(inputs),
       SfBp : calculations.SfBp(inputs),
       SfFvFt : calculations.SfFvFt(inputs),
+
+      fub : calculations.fub(inputs),
+
+   
       
     }
   }, // NE PAS OUBLIER LA VIRGULE
@@ -205,12 +209,12 @@ const calculations = {
 
   alphaB: (inputs) => {
     const {
-     fub,
      fu,
 
     } = inputs;
 
     const alphaD = calculations.alphaD(inputs);
+    const fub = calculations.fub(inputs);
 
     return  (Math.min(alphaD,fub/fu,1));
   
@@ -247,13 +251,13 @@ const calculations = {
 
   FvRd: (inputs) => {
     const {
-      fub,
       GammaTwo,
     } = inputs;
 
     const As = calculations.As(inputs); 
     const alphaV = calculations.alphaV(inputs); 
-    
+    const fub = calculations.fub(inputs);
+
     return (alphaV*fub*As/GammaTwo/1000);
   }, // NE PAS OUBLIER LA VIRGULE
 
@@ -261,11 +265,11 @@ const calculations = {
   FtRd: (inputs) => {
     const {
       kTwo,
-      fub,
       GammaTwo,
     } = inputs;
 
     const As = calculations.As(inputs); 
+    const fub = calculations.fub(inputs);
 
     return kTwo*fub*As/GammaTwo/1000;
   }, // NE PAS OUBLIER LA VIRGULE
@@ -349,8 +353,38 @@ const calculations = {
 
     return (FvEd/FvRd + FtEd/(1.4*FtRd));
   }, // NE PAS OUBLIER LA VIRGULE
+
   
+  fub: (inputs) => {
+    const {
+      BoltClass
+    } = inputs;
+
+    if (BoltClass == 1 || BoltClass == 2  ) {
+      return (400);
+
+    }
+
+    if (BoltClass == 3 || BoltClass == 4 ) {
+      return (500);
+    }
+
+    if (BoltClass == 5) {
+      return (600);
+    }
+    
+    if (BoltClass == 6) {
+      return (800);
+    }
+    
+    
+    if (BoltClass == 7) {
+      return (1000);
+    }
+  }, // NE PAS OUBLIER LA VIRGULE
 
 }
+
+
 
 export default calculations;

@@ -1,21 +1,76 @@
-import React, { useState } from 'react';
-import { Tooltip, InputGroupText } from 'reactstrap';
-import PropTypes from 'prop-types';
-import { FaInfoCircle } from 'react-icons/fa/';
-import './ToolTips.css';
+import React from 'react';
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import {
+  Input,
+  InputLabel,
+  InputAdornment,
+  FormControl,
+  TextField,
+  OutlinedInput,
+} from '@material-ui/core';
 
-const ToolTips = (props) => {
-  const [status, setStatus] = useState(false);
+// import './InputElem.css';
+import Alert from '@material-ui/lab/Alert';
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    background: '#e0e0e0',
+
+    
+  },
+
+  margin: {
+    margin: theme.spacing(1),
+  },
+
+
+
+  customAlert : {
+    color : "black",
+    },
+
+ 
+
+}));
+
+const ToolTips = ({
+  text,
+  description,
+  value,
+  unit,
+  onChange
+}) => {
+  const classes = useStyles();
+
+  
+
+  if (value > 1) {
   return (
-    <div className="tooltips">
-      <div className="groupInfo" id={props.target}>
-        <FaInfoCircle className="icon" />
-      </div>
-      <Tooltip placement="top" isOpen={status} target={props.target} toggle={() => setStatus(!status)}>
-        {props.description}
-      </Tooltip>
+    <div className={classes.root}>
+      <FormControl  fullWidth
+       className={clsx(classes.margin)} 
+       >
+      <Alert severity="error" variant="filled"  className= {classes.customAlert}> NOK </Alert>
+
+      </FormControl>
     </div>
   );
-}
+  }
 
+  if (value < 1) {
+    return (
+      <div className={classes.root}>
+        <FormControl fullWidth 
+        className={clsx(classes.margin)} 
+        > 
+        <Alert severity="success" variant="filled" className= {classes.customAlert}> OK </Alert>
+        </FormControl>
+      </div>
+    );
+    }
+
+
+};
 export default ToolTips;
