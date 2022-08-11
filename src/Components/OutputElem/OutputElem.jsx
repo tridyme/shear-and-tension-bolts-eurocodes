@@ -62,7 +62,7 @@ const OutputElem = ({
   let isMoreThanOne = false
 
   value > 1 ? (isMoreThanOne = true) : (isMoreThanOne = false)
-  console.log(value)
+  
   return (
     <div className={classes.root}>
       

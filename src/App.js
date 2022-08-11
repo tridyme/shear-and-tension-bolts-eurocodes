@@ -61,7 +61,7 @@ const App = () => {
 
   return (
     <div>
-        <img src = "/images/entraxes_des_fixations.png" alt = ""/>
+        
       <ThemeProvider theme={theme}>
         <Helmet>
           <title>{`TriDyme | Applications`}</title>
@@ -72,11 +72,11 @@ const App = () => {
             title={<ListItem>
               <ListItemAvatar>
                 <Avatar
-                  alt={`Bolt analysis under combined shear and tension`}
+                  alt={`TriDyme - Bolt analyis app`}
                   src={Icon}
                 />
               </ListItemAvatar>
-              <ListItemText primary={`Bolt analysis under combined shear and tension`} />
+              <ListItemText primary={`TriDyme - Bolt analyis app`} />
             </ListItem>}
             menu={Menu}
           >

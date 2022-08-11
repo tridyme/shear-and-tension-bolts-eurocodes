@@ -121,7 +121,13 @@ function SectionAnalysis() {
 
   const [dialogOpendM, setDialogOpendM] = useState(false);
 
-  const FtRdFormula = 'F_{t,Rd} =  k_{2}*f_{ub}*A_{s}/Ɣ_{M2} ';
+  const FtRdFormula = [String.raw`FtRd=\frac{k_{2}f_{ub}A_{s}}{γ_{M2}}`];
+  
+  const FvRdFormula = [String.raw`FvRd=\frac{α_{v}f_{ub}A_{s}}{γ_{M2}}`];
+  
+  const FbRdFormula = [String.raw`FbRd=\frac{k_{1}α_{b}f_{u}dt}{γ_{M2}}`];
+  
+  const BpRdFormula = [String.raw`BpRd=\frac{0.6πd_{m}t_{p}f_{u}}{γ_{M2}}`];
 
   const xOne = 6;
   
@@ -129,24 +135,30 @@ function SectionAnalysis() {
 
   const xThree = 3;
 
-
+ 
  
 
   return (
-    <Grid container spacing={5} >
+    <Grid container spacing={5} style={{display:'flex',justifyContent:'left',alignItems:'left'}}>
+      
+      <img src = "/images/header-texte.png" alt = ""/>
+      <Grid container spacing={5} style={{display:'flex',justifyContent:'center',alignItems:'left'}}>
+      <img src = "/images/image- entraxes des fixations.png" alt = ""/>
+      </Grid>
+      
       <Grid item md={12}  
        >
         <CardElem
           title="Geometry"
           
         >
-          <Grid container = {true}  
+          <Grid container = {true} alignItems="center" 
            >
-            <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+            <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
               <TextField
               variant="outlined"
               defaultValue={"Distance along load direction : e1"}
-              inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+              inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
               style={{height: '48px', width: '600px', justifyContent: 'center'}}
               />
 
@@ -163,13 +175,13 @@ function SectionAnalysis() {
                 onChange={handleChangeValues('eOne')} 
               />
             </Grid>
-            <Grid item md ={xThree} alignItems="center" style={{ backgroundColor: '#e0e0e0', display: "flex"}} >
+            <Grid item md ={xThree}  style={{ backgroundColor: '#e0e0e0', display: "flex"}} >
               <TextField 
                 variant="outlined"
                 defaultValue={"Figure 3.1"}
                 inputProps={{
                   readOnly : true,
-                  style: {textAlign: 'center', }
+                  style: {textAlign: 'center',  fontWeight: 600}
                   }}
               style={{
                   height: '48px',
@@ -181,20 +193,21 @@ function SectionAnalysis() {
               <Dialog open={dialogOpeneOne} onClose={() => setDialogOpeneOne(false)}>
                 <DialogTitle>Minimum end distance along load direction e1</DialogTitle>
                 <DialogContent dividers>
-                  <Typography>Recommended value : e1 = 1.2d0  </Typography>
+                  <Typography style={{ fontWeight: 600 }} align="center" >Recommended value</Typography>
+                  <Typography > e1 = 1.2d0 </Typography>
                   <Typography>where d0 = d + 2 with d as the bolt nominal diameter  </Typography>
                 </DialogContent>
               </Dialog>
             </Grid>
           </Grid>
-          <Grid container = {true}>
+          <Grid container = {true} alignItems="center">
           
-          <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+          <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
             <TextField
             variant="outlined"
             defaultValue={"Distance perpendicular to load direction : e2"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
-            style={{height: '48px', width: '600px', justifyContent: 'center'}}
+            inputProps={{readOnly : true, style: {textAlign: 'left',  }, }}
+            style={{height: '48px', width: '600px', justifyContent: 'center',}}
             />
             </Grid>
           <Grid item md ={xTwo} > 
@@ -204,64 +217,66 @@ function SectionAnalysis() {
               onChange={handleChangeValues('eTwo')}
             />
           </Grid>
-          <Grid item md ={xThree} alignItems="center" style={{ display: "flex" }} >
+          <Grid item md ={xThree} style={{ display: "flex" }} >
             <TextField 
               variant = 'outlined'
               defaultValue={"Figure 3.1"}
-              inputProps={{readOnly : true, style: {textAlign: 'center' }}}
+              inputProps={{readOnly : true, style: {textAlign: 'center', fontWeight: 600 }}}
               style={{height: '48px', width: '600px',justifyContent: 'center'}}
               onClick={() => setDialogOpeneTwo(true)}
               />
             <Dialog open={dialogOpeneTwo} onClose={() => setDialogOpeneTwo(false)}>
               <DialogTitle>Minimum end distance perpendicular to load direction e2</DialogTitle>
               <DialogContent dividers>
-                <Typography>Recommended value : e2 = 1.2d0  </Typography>
+                <Typography style={{ fontWeight: 600 }} align="center" >Recommended value  </Typography>
+                <Typography > e2 = 1.2d0 </Typography>
                 <Typography>where d0 = d + 2 with d as the bolt nominal diameter  </Typography>
               </DialogContent>
             </Dialog>
           </Grid>
           </Grid>
 
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
             <TextField
             variant="outlined"
-            defaultValue={"Center-to-center spacing along load direction : p1"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Spacing along load direction : p1"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
             </Grid> 
-        <Grid item md ={xTwo} > 
+        <Grid item md ={xTwo}  > 
           <InputElem
             value={values.pOne}
             unit={'mm'}
             onChange={handleChangeValues('pOne')}
           />
         </Grid>
-        <Grid item md ={xThree} alignItems="center" style={{ display: "flex" }} >
+        <Grid item md ={xThree} style={{ display: "flex" }} >
           <TextField 
             variant='outlined'
             defaultValue={"Figure 3.1"}
-            inputProps={{readOnly : true, style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true, style: {textAlign: 'center' , fontWeight: 600}}}
             style={{height: '48px', width: '600px',justifyContent: 'center'}}
             onClick={() => setDialogOpenpOne(true)}
             />
             <Dialog open={dialogOpenpOne} onClose={() => setDialogOpenpOne(false)}>
             <DialogTitle>Minimum center-to-center spacing along load direction p1</DialogTitle>
             <DialogContent dividers>
-              <Typography>Recommended value : p1 = 2.2d0  </Typography>
+              <Typography style={{ fontWeight: 600 }} align="center">Recommended value </Typography>
+              <Typography> p1 = 2.2d0</Typography>
               <Typography>where d0 = d + 2 with d as the bolt nominal diameter  </Typography>
             </DialogContent>
           </Dialog>
           </Grid>
           </Grid>
 
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
             <TextField
             variant="outlined"
-            defaultValue={"Center-to-center spacing perpendicular to load direction : p2"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Spacing perpendicular to load direction : p2"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
             </Grid>
@@ -272,30 +287,31 @@ function SectionAnalysis() {
             onChange={handleChangeValues('pTwo')}
           />
           </Grid>
-          <Grid item md ={xThree} alignItems="center" style={{ display: "flex" }} >
+          <Grid item md ={xThree} style={{ display: "flex" }} >
           <TextField 
             variant = 'outlined'
             defaultValue={"Figure 3.1"}
-            inputProps={{readOnly : true,style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true,style: {textAlign: 'center' , fontWeight: 600}}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenpTwo(true)}
             />
             <Dialog open={dialogOpenpTwo} onClose={() => setDialogOpenpTwo(false)}>
             <DialogTitle>Minimum center-to-center spacing perpendicular to load direction p2 [mm]</DialogTitle>
             <DialogContent dividers>
-              <Typography>Recommended value : p2 = 2.4d0  </Typography>
+              <Typography style={{ fontWeight: 600 }} align="center">Recommended value </Typography>
+              <Typography >   p2 = 2.4d0 </Typography>
               <Typography>where d0 = d + 2 with d as the bolt nominal diameter  </Typography>
             </DialogContent>
             </Dialog>
             </Grid>
           </Grid>
 
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
           variant="outlined"
           defaultValue={"Position of the bolt along load direction"}
-          inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+          inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
           style={{height: '48px', width: '600px', justifyContent: 'center'}}
           />
         </Grid>
@@ -313,12 +329,12 @@ function SectionAnalysis() {
         </Grid>
         </Grid>
 
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center" >
+        <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
           variant="outlined"
           defaultValue={"Position of the bolt perpendicular to load direction"}
-          inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+          inputProps={{readOnly : true, style: {textAlign: 'left' },}}
           style={{height: '48px', width: '600px', justifyContent: 'center'}}
           />
         </Grid>
@@ -337,11 +353,11 @@ function SectionAnalysis() {
         </Grid>
 
         <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
           variant="outlined"
           defaultValue={"Thickness of the connected plate : tp"}
-          inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+          inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
           style={{height: '48px', width: '600px', justifyContent: 'center'}}
           />
         </Grid>
@@ -355,12 +371,12 @@ function SectionAnalysis() {
         </Grid >
         </Grid>
 
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
           variant="outlined"
-          defaultValue={"Diameter of the bolt"}
-          inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+          defaultValue={"Diameter of the bolt : d"}
+          inputProps={{readOnly : true, style: {textAlign: 'left' }}}
           style={{height: '48px', width: '600px', justifyContent: 'center'}}
           />
         </Grid>
@@ -402,13 +418,13 @@ function SectionAnalysis() {
             subtitle=""
           >
           
-          <Grid container = {true}>
-          <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+          <Grid container = {true} alignItems="center">
+          <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
             defaultValue={"Class of the bolt"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
-            style={{height: '48px', width: '600px', justifyContent: 'center'}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
+            style={{height: '48px', width: '600px', justifyContent: 'center',}}
             />
           </Grid>
           <Grid item md = {xTwo}> 
@@ -429,8 +445,9 @@ function SectionAnalysis() {
         </Select>
         </FormControl>
         </Grid>
-          <Grid item md ={xThree} alignItems="flex-start" style={{ display: "flex" }} >
+          <Grid item md ={xThree}  style={{ display: "flex" }} >
           <TextField 
+            
             variant='outlined'
             margin="normal"
             defaultValue={"§3.1"}
@@ -441,13 +458,13 @@ function SectionAnalysis() {
         </Grid>
 
 
-        <Grid container = {true}>
+        <Grid container = {true} alignItems="center">
          
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
             defaultValue={"Partial safety factor for the resistance of bolts : yM2"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
           />
         </Grid>
@@ -455,31 +472,33 @@ function SectionAnalysis() {
             <InputElem
               value={values.GammaTwo}
               onChange={handleChangeValues('GammaTwo')}
+              unit={''}
             />
           </Grid>
-          <Grid item md ={xThree} alignItems="center" style={{ display: "flex" }} >
+          <Grid item md ={xThree}  style={{ display: "flex" }} >
             <TextField 
               variant='outlined'
               defaultValue={"§2.2"}
-              inputProps={{readOnly : true,style: {textAlign: 'center' }}}
+              inputProps={{readOnly : true,style: {textAlign: 'center' , fontWeight: 600 }}}
               style={{height: '48px', width: '600px',justifyContent: 'center'}}
               onClick={() => setDialogOpenGammaTwo(true)}
             />
              <Dialog open={dialogOpenGammaTwo} onClose={() => setDialogOpenGammaTwo(false)}>
                 <DialogTitle>Partial safety factor for the resistance of bolts</DialogTitle>
                 <DialogContent dividers>
-                  <Typography>Recommended value : γM2 = 1.25</Typography>
+                  <Typography style={{ fontWeight: 600 }} align="center">Recommended value </Typography>
+                  <Typography> γM2 = 1.25</Typography>
                 </DialogContent>
               </Dialog>
 
             </Grid>
           </Grid>
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center"  >
+        <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
             <TextField
               variant="outlined"
               defaultValue={"Ultimate tensile strength of the connected plate : fu"}
-              inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+              inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
               style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -491,7 +510,7 @@ function SectionAnalysis() {
           />
 
         </Grid>
-        <Grid item md ={xThree} alignItems="center" style={{ display: "flex" }} >
+        <Grid item md ={xThree} style={{ display: "flex" }} >
           <TextField 
             variant='outlined'
             defaultValue={"Table 3.1"}
@@ -501,13 +520,13 @@ function SectionAnalysis() {
             </Grid>
         </Grid>
 
-        <Grid container = {true}>
+        <Grid container = {true} alignItems="center">
       
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
             defaultValue={"Design tension force : FtEd"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -521,11 +540,11 @@ function SectionAnalysis() {
           </Grid>
           
         <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
             defaultValue={"Design shear force : FvEd"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -545,12 +564,12 @@ function SectionAnalysis() {
           title="Results"
           subtitle=""
         >
-      <Grid container = {true}> 
-      <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+      <Grid container = {true} alignItems="center" > 
+      <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Safety factor for shear stress"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Safety factor for shear stress : FvEd / FvRd"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             
             />
@@ -561,6 +580,7 @@ function SectionAnalysis() {
           unit={''}
           onChange={handleChangeValues('SfFv')}
           
+          
         />
       </Grid>
       <Grid item md = {xThree} > 
@@ -569,12 +589,12 @@ function SectionAnalysis() {
       /> 
       </Grid>
       </Grid>
-      <Grid container = {true}>
-      <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+      <Grid container = {true} alignItems="center" >
+      <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Safety factor for bearing stress"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Safety factor for bearing stress : FvEd / FbRd"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
         </Grid>
@@ -596,12 +616,12 @@ function SectionAnalysis() {
         </Grid>
       </Grid>
 
-      <Grid container = {true}>
-      <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+      <Grid container = {true} alignItems="center" >
+      <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Safety factor for tension stress"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Safety factor for tension stress : FtEd / FtRd"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
         </Grid>
@@ -622,12 +642,12 @@ function SectionAnalysis() {
         </Grid>
       </Grid>
 
-      <Grid container = {true}>
-      <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+      <Grid container = {true} alignItems="center" >
+      <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Safety factor for punching stress"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Safety factor for punching stress : FtEd / BpRd"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
         </Grid>
@@ -646,12 +666,12 @@ function SectionAnalysis() {
         </Grid>
       </Grid>
 
-      <Grid container = {true}>
-      <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+      <Grid container = {true} alignItems="center">
+      <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Safety factor for combined shear and tension stress"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Safety factor shear-tension stress : FvEd/FvRd + FtEd / (1.4FtRd)"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
         </Grid>
@@ -659,6 +679,7 @@ function SectionAnalysis() {
         <OutputElem
           value={values.SfFvFt}
           onChange={handleChangeValues('SfFvFt')}
+          unit={''}
         />
        </Grid>
        <Grid item md = {xThree} > 
@@ -671,17 +692,17 @@ function SectionAnalysis() {
       </Grid>
       <Grid item md={12}>
         <CardElem
-          title="Complementary calculations"
+          title="Calculations details"
           subtitle=""
         >
 
 
-        <Grid container = {true}>
-          <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+          <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Diameter of the bolt hole"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Diameter of the bolt hole : D "}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
           />
           </Grid>
@@ -694,12 +715,12 @@ function SectionAnalysis() {
           </Grid>
           </Grid>
 
-          <Grid container = {true}>
-          <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+          <Grid container = {true} alignItems="center" >
+          <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
             defaultValue={"Stress area of the bolt : As"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -711,13 +732,13 @@ function SectionAnalysis() {
           /> 
           </Grid>
           </Grid>
-        <Grid container = {true}>
+        <Grid container = {true} alignItems="center">
             
-            <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+            <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
               <TextField
                 variant="outlined"
                 defaultValue={"Ultimate tensile strength of the bolt : fub"}
-                inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+                inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
                 style={{height: '48px', width: '600px', justifyContent: 'center'}}
               />
             </Grid>
@@ -728,22 +749,22 @@ function SectionAnalysis() {
                 onChange={handleChangeValues('fub')}
               />
             </Grid>
-            <Grid item md ={xThree} alignItems="center" style={{ display: "flex" }} >
+            <Grid item md ={xThree}  style={{ display: "flex" }} >
               <TextField 
                 variant='outlined'
                 defaultValue={"Table 3.1"}
-                inputProps={{readOnly : true,style: {textAlign: 'center' }}}
+                inputProps={{readOnly : true,style: {textAlign: 'center' , fontWeight: 600}}}
                 style={{height: '48px',width: '600px',justifyContent: 'center'}}
               />
               </Grid>
           </Grid>
-        < Grid container =  {true} >
+        < Grid container =  {true} alignItems="center">
 
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Tensile strength"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Tensile strength : FtRd"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
         </Grid>
@@ -757,18 +778,18 @@ function SectionAnalysis() {
             
           />
           </Grid>
-          <Grid item md ={xThree} alignItems="center" style={{ display: "flex"}} >
+          <Grid item md ={xThree} style={{ display: "flex"}} >
           <TextField 
             variant='outlined'
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true, style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true, style: {textAlign: 'center'  , fontWeight: 600}}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenFtRd(true)}
           />
           <Dialog open={dialogOpenFtRd} onClose={() => setDialogOpenFtRd(false)}>
             <DialogTitle>Tensile strength of bolts</DialogTitle>
             <DialogContent dividers  >
-            <Typography> Table 3.4 </Typography>
+            <Typography align="center"  style={{ fontWeight: 600}}> Table 3.4 </Typography>
             <MathJax.Provider>
             <div>
               <p> <MathJax.Node formula={FtRdFormula} /></p>
@@ -780,12 +801,12 @@ function SectionAnalysis() {
           </Grid>
         </Grid>
         
-        <Grid container = {true} >
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Shear resistance"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Shear resistance : FvRd"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
         </Grid>
@@ -797,21 +818,21 @@ function SectionAnalysis() {
             onChange={handleChangeValues('FvRd')}
           />
           </Grid>
-          <Grid item md ={xThree} alignItems="flex-end" style={{ display: "flex"}} >
+          <Grid item md ={xThree} style={{ display: "flex"}} >
           <TextField
             variant='outlined' 
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true, style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true, style: {textAlign: 'center'  , fontWeight: 600}}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenFvRd(true)}
           />
           <Dialog open={dialogOpenFvRd} onClose={() => setDialogOpenFvRd(false)}>
             <DialogTitle>Shear strength of bolts</DialogTitle>
             <DialogContent dividers  >
-            <Typography> Table 3.4 </Typography>
+            <Typography  align="center"  style={{ fontWeight: 600 }} > Table 3.4 </Typography>
             <MathJax.Provider>
             <div>
-              <p> <MathJax.Node formula={FtRdFormula} /></p>
+              <p> <MathJax.Node formula={FvRdFormula} /></p>
               <hr></hr>
             </div>
             </MathJax.Provider>
@@ -820,12 +841,12 @@ function SectionAnalysis() {
           </Grid>
         </Grid>
 
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center" >
+        <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Bearing strength"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Bearing strength : FbRd"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
         </Grid>
@@ -837,21 +858,21 @@ function SectionAnalysis() {
           />
           </Grid>
 
-          <Grid item md ={xThree} alignItems="flex-end" style={{ display: "flex"}} >
+          <Grid item md ={xThree} style={{ display: "flex"}} >
             <TextField 
             variant='outlined'
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true,style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true,style: {textAlign: 'center' , fontWeight: 600 }}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenFbRd(true)}
             />
             <Dialog open={dialogOpenFbRd} onClose={() => setDialogOpenFbRd(false)}>
             <DialogTitle>Bearing strength of bolts</DialogTitle>
             <DialogContent dividers  >
-            <Typography> Table 3.4 </Typography>
+            <Typography  align="center" style={{ fontWeight: 600 }} > Table 3.4 </Typography>
             <MathJax.Provider>
             <div>
-              <p> <MathJax.Node formula={FtRdFormula} /></p>
+              <p> <MathJax.Node formula={FbRdFormula} /></p>
               <hr></hr>
             </div>
             </MathJax.Provider>
@@ -860,12 +881,12 @@ function SectionAnalysis() {
             </Grid>
         </Grid>
 
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Punching strength"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            defaultValue={"Punching strength : BpRd"}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -876,21 +897,21 @@ function SectionAnalysis() {
             onChange={handleChangeValues('BpRd')}
           />
          </Grid>
-         <Grid item md ={xThree} alignItems="center" style={{ display: "flex"}} >
+         <Grid item md ={xThree} style={{ display: "flex"}} >
             <TextField 
             variant='outlined'
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true, style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true, style: {textAlign: 'center' , fontWeight: 600 }}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenBpRd(true)}
             />
             <Dialog open={dialogOpenBpRd} onClose={() => setDialogOpenBpRd(false)}>
             <DialogTitle>Punching strength of bolts</DialogTitle>
             <DialogContent dividers  >
-            <Typography> Table 3.4 </Typography>
+            <Typography  align="center" style={{ fontWeight: 600,  }} > Table 3.4 </Typography>
             <MathJax.Provider>
             <div>
-              <p> <MathJax.Node formula={FtRdFormula} /></p>
+              <p> <MathJax.Node formula={BpRdFormula} /></p>
               <hr></hr>
             </div>
             </MathJax.Provider>
@@ -899,12 +920,12 @@ function SectionAnalysis() {
           </Grid>
         </Grid>
         
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
             defaultValue={"Coefficient related to the bolt class : alphaV"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -912,20 +933,21 @@ function SectionAnalysis() {
           <OutputDetails
             value={values.alphaV}
             onChange={handleChangeValues('alphaV')} 
+            unit={''}
           />
           </Grid> 
-          <Grid item md ={xThree} alignItems="center" style={{ display: "flex"}} >
+          <Grid item md ={xThree}  style={{ display: "flex"}} >
             <TextField 
             variant='outlined'
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true, style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true, style: {textAlign: 'center' , fontWeight: 600 }}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenalphaV(true)}
             />
             <Dialog open={dialogOpenalphaV} onClose={() => setDialogOpenalphaV(false)}>
             <DialogTitle>Coefficient αv </DialogTitle>
             <DialogContent dividers>
-              <Typography>Recommended values</Typography>
+              <Typography  style={{ fontWeight: 600 }} align="center" >Recommended values</Typography>
               <Typography> alphaV = 0.6 for bolts class equal to 4.6, 5.6 and 8.8</Typography>
               <Typography> alphaV = 0.5 for bolts class equal to 4.8, 6.8 and 10.9</Typography>
             </DialogContent>
@@ -933,13 +955,13 @@ function SectionAnalysis() {
             </Grid>
         </Grid>
 
-        <Grid container = {true} >
+        <Grid container = {true} alignItems="center" >
           
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid item md ={xOne} style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
             defaultValue={"Coefficient related to the bolt location : k1"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -947,33 +969,34 @@ function SectionAnalysis() {
           <OutputDetails
             value={values.kOne}
             onChange={handleChangeValues('kOne')} 
+            unit={''}
           />
           </Grid>
-          <Grid item md ={xThree} alignItems="flex-end" style={{ display: "flex"}} >
+          <Grid item md ={xThree} style={{ display: "flex"}} >
             <TextField
             variant='outlined' 
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true,style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true,style: {textAlign: 'center'  , fontWeight: 600}}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenkOne(true)}
             />
             <Dialog open={dialogOpenkOne} onClose={() => setDialogOpenkOne(false)}>
               <DialogTitle>Coefficient k1 </DialogTitle>
               <DialogContent dividers>
-                <Typography>Recommended values</Typography>
-                <Typography> For edge  bolts </Typography>
-                <Typography> For inner bolts </Typography>
+                <Typography   style={{ fontWeight: 600 }} align="center">Recommended values</Typography>
+                <Typography> For edge  bolts : min(2.8e2/D - 1.7 ; 2.5 ) </Typography>
+                <Typography> For inner bolts : min(1.4p2/D - 1.7 ; 2.5) </Typography>
               </DialogContent>
             </Dialog>
             </Grid>
         </Grid>
 
-        <Grid container = {true} >
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
         <TextField
             variant="outlined"
             defaultValue={"Coefficient related to the bolt location : k2"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -982,34 +1005,35 @@ function SectionAnalysis() {
           <OutputDetails
             value={values.kTwo}
             onChange={handleChangeValues('kTwo')} 
+            unit={''}
           />
           </Grid>
 
-          <Grid item md ={xThree} alignItems="center" style={{ display: "flex"}} >
+          <Grid item md ={xThree}  style={{ display: "flex"}} >
             <TextField 
             variant='outlined'
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true, style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true, style: {textAlign: 'center'  , fontWeight: 600}}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenkTwo(true)}
             />
             <Dialog open={dialogOpenkTwo} onClose={() => setDialogOpenkTwo(false)}>
             <DialogTitle>Coefficient k2 </DialogTitle>
             <DialogContent dividers>
-              <Typography>Recommended values</Typography>
-              <Typography> For edge  bolts </Typography>
-              <Typography> For inner bolts </Typography>
+              <Typography  style={{ fontWeight: 600 }} align="center" >Recommended values</Typography>
+              <Typography> For countersunk bolts : 0.63   </Typography>
+              <Typography> Otherwise : 0.9 : </Typography>
               </DialogContent>
             </Dialog>
           </Grid>
           
         </Grid>
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
         <TextField
             variant="outlined"
             defaultValue={"Coefficient related to the bolt location : alphaD"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' },}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -1018,34 +1042,35 @@ function SectionAnalysis() {
           <OutputDetails
             value={values.alphaD}
             onChange={handleChangeValues('alphaD')} 
+            unit={''}
           />
           </Grid>
 
-          <Grid item md ={xThree} alignItems="center" style={{ display: "flex"}} >
+          <Grid item md ={xThree}  style={{ display: "flex"}} >
             <TextField 
             variant='outlined'
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true, style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true, style: {textAlign: 'center'  , fontWeight: 600}}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenalphaD(true)}
             />
             <Dialog open={dialogOpenalphaD} onClose={() => setDialogOpenalphaD(false)}>
             <DialogTitle>Coefficient alphaD </DialogTitle>
             <DialogContent dividers>
-              <Typography>Recommended values</Typography>
-              <Typography> For edge  bolts </Typography>
-              <Typography> For inner bolts </Typography>
+              <Typography style={{ fontWeight: 600 }} align="center">Recommended values</Typography>
+              <Typography> For edge  bolts : e1/(3D) </Typography>
+              <Typography> For inner bolts : p1/(3D) - 1/4 </Typography>
             </DialogContent>
             </Dialog>
           </Grid>
         </Grid>
 
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
         <TextField
             variant="outlined"
             defaultValue={"Coefficient related to the bolt location : alphaB"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -1053,33 +1078,33 @@ function SectionAnalysis() {
           <OutputDetails
             value={values.alphaB}
             onChange={handleChangeValues('alphaB')} 
+            unit={''}
           />  
           </Grid>
-          <Grid item md ={xThree} alignItems="center" style={{ display: "flex"}} >
+          <Grid item md ={xThree} style={{ display: "flex"}} >
             <TextField 
             variant='outlined'
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true,style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true,style: {textAlign: 'center'  , fontWeight: 600}}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpenalphaB(true)}
             />
             <Dialog open={dialogOpenalphaB} onClose={() => setDialogOpenalphaB(false)}>
             <DialogTitle>Coefficient alphaB </DialogTitle>
             <DialogContent dividers>
-              <Typography>Recommended values</Typography>
-              <Typography> For edge  bolts </Typography>
-              <Typography> For inner bolts </Typography>
+              <Typography style={{ fontWeight: 600 }} align="center" >Recommended values</Typography>
+              <Typography> min (alphaD ; fub/fu ; 1.0) </Typography>
             </DialogContent>
             </Dialog>
           </Grid>
           
         </Grid>
-        <Grid container = {true}>
-        <Grid tem md ={xOne} alignItems="center" style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
+        <Grid container = {true} alignItems="center">
+        <Grid item md ={xOne}  style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
         <TextField
             variant="outlined"
             defaultValue={"Mean diameter of the bolt: dm"}
-            inputProps={{readOnly : true, style: {textAlign: 'left' }, disableUnderline: true}}
+            inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             />
           </Grid>
@@ -1087,23 +1112,23 @@ function SectionAnalysis() {
           <OutputDetails
             value={values.dM}
             onChange={handleChangeValues('dM')} 
+            unit={''}
           />
           </Grid>
 
-          <Grid item md ={xThree} alignItems="flex-end" style={{ display: "flex"}} >
+          <Grid item md ={xThree}  style={{ display: "flex"}} >
           <TextField 
             variant = 'outlined'
             defaultValue={"Figure 3.4"}
-            inputProps={{readOnly : true, style: {textAlign: 'center' }}}
+            inputProps={{readOnly : true, style: {textAlign: 'center' , fontWeight: 600 }}}
             style={{height: '48px', width: '600px', justifyContent: 'center'}}
             onClick={() => setDialogOpendM(true)}
           />
           <Dialog open={dialogOpendM} onClose={() => setDialogOpendM(false)}>
             <DialogTitle>Coefficient dM </DialogTitle>
             <DialogContent dividers>
-              <Typography>Recommended values</Typography>
-              <Typography> For edge  bolts </Typography>
-              <Typography> For inner bolts </Typography>
+              <Typography style={{ fontWeight: 600 }} align="center" >Recommended values</Typography>
+              <Typography> d = 1.07735s where s is the distance across flats  </Typography>
             </DialogContent>
           </Dialog>
           </Grid> 
