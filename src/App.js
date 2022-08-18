@@ -17,7 +17,7 @@ import {
   ListItemText,
   Typography
 } from '@material-ui/core';
-import Icon from './Icon.svg';
+import Icon from './Icon.png';
 import Logo from './Logo.png';
 import SectionAnalysis from './Views/SectionAnalysis/SectionAnalysis';
 
@@ -30,7 +30,7 @@ const Menu = {
   ],
   MenuSideBarInf: [
     // { text: "Documentation", link: "", href: "https://www.tridyme.com/fr/documentation/fr/developpers/tridyme-webapp-kit-serverless", icon: "chrome_reader_mode" },
-    { text: "GitHub", link: "", href: "https://github.com/tridyme/sdk-structure-app", icon: "code" }
+    { text: "GitHub", link: "", href: "https://github.com/Igor-TriDyme/bolts-app.git", icon: "code" }
   ]
 };
 

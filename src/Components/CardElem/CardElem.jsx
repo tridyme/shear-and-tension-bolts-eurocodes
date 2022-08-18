@@ -15,9 +15,9 @@ const useStyles = makeStyles(theme => ({
   card: {
 		// minWidth: 175,
 		textDecoration: 'none',
-		margin: theme.spacing(1),
-		
-		
+		margin: theme.spacing(2),
+		flex : 1 ,
+	
 	},
 	link: {
 		textDecoration: 'none'
