@@ -17,7 +17,7 @@ import {
   ListItemText,
   Typography
 } from '@material-ui/core';
-import Icon from './Icon.svg';
+import Icon from './Icon.png';
 import Logo from './Logo.png';
 import SectionAnalysis from './Views/SectionAnalysis/SectionAnalysis';
 
@@ -30,7 +30,7 @@ const Menu = {
   ],
   MenuSideBarInf: [
     // { text: "Documentation", link: "", href: "https://www.tridyme.com/fr/documentation/fr/developpers/tridyme-webapp-kit-serverless", icon: "chrome_reader_mode" },
-    { text: "GitHub", link: "", href: "https://github.com/tridyme/sdk-structure-app", icon: "code" }
+    { text: "GitHub", link: "", href: "https://github.com/Igor-TriDyme/bolts-app.git", icon: "code" }
   ]
 };
 
@@ -60,32 +60,37 @@ const App = () => {
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <Helmet>
-        <title>{`TriDyme | Applications`}</title>
-        <link rel="icon" type="image/png" href={Logo} sizes="16x16" />
-      </Helmet>
-      <Router history={history}>
-        <AppContainerElem
-          title={<ListItem>
-            <ListItemAvatar>
-              <Avatar
-                alt={`Bolt analysis under combined shear and tension`}
-                src={Icon}
-              />
-            </ListItemAvatar>
-            <ListItemText primary={`Bolt analysis under combined shear and tension`} />
-          </ListItem>}
-          menu={Menu}
-        >
-          <Switch>
-            <Route exact path="/" component={SectionAnalysis} />
-            <Route exact path="/home" component={SectionAnalysis} />
-          </Switch>
-        </AppContainerElem>
-      </Router>
-    </ThemeProvider>
+    <div>
+        
+      <ThemeProvider theme={theme}>
+        <Helmet>
+          <title>{`TriDyme | Applications`}</title>
+          <link rel="icon" type="image/png" href={Logo} sizes="16x16" />
+        </Helmet>
+        <Router history={history}>
+          <AppContainerElem
+            title={<ListItem>
+              <ListItemAvatar>
+                <Avatar
+                  alt={`TriDyme - Bolt analyis app`}
+                  src={Icon}
+                />
+              </ListItemAvatar>
+              <ListItemText primary={`TriDyme - Bolt analyis app`} />
+            </ListItem>}
+            menu={Menu}
+          >
+            <Switch>
+              <Route exact path="/" component={SectionAnalysis} />
+              <Route exact path="/home" component={SectionAnalysis} />
+            </Switch>
+          </AppContainerElem>
+        </Router>
+      </ThemeProvider>
+   </div>
+   
   );
+  
 };
 
 export default App;

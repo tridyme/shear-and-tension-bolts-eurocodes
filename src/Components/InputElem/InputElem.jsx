@@ -7,6 +7,7 @@ import {
   InputAdornment,
   FormControl,
   TextField,
+  OutlinedInput,
 } from '@material-ui/core';
 import ToolTips from '../ToolTips';
 // import './InputElem.css';
@@ -16,27 +17,29 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     background: '#e0e0e0',
-   
-   
+    
   },
   margin: {
     margin: theme.spacing(1),
   },
 
   textField: {
-    width: "90%",
+    width: "100%",
+
   },
   input: {
-    color: 'blue',
-    textAlign: "right", 
-    backgroundColor: "#e0e0e0"
+    color: 'black',
+    textAlign: "center", 
+    backgroundColor: "white",
+    
+
   },
   inputAdornment: {
     // paddingRight: '1em',
     color: 'black'
   },
 
-  
+ 
 }));
 
 const InputElem = ({
@@ -44,20 +47,29 @@ const InputElem = ({
   description,
   value,
   unit,
-  onChange
+  onChange,
+ 
 }) => {
   const classes = useStyles();
+  
   return (
     <div className={classes.root}>
+      
       <FormControl
+        
         className={clsx(classes.margin, classes.withoutLabel, classes.textField,)}
-      // variant="outlined"
+        
       >
+        
         <InputLabel htmlFor="outlined-adornment-amount">{description}</InputLabel>
-        <Input
+        <OutlinedInput
+          
           className={onChange && classes.input}
           value={value}
           classes={{input: classes.input}}
+        
+      
+          
           startAdornment={text &&
             <InputAdornment
               position="start"

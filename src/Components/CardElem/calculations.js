@@ -3,121 +3,104 @@ const Data ={
       "Size": 5.00,
       "d": 5.00,
       "s": 8.00,
-      "As": 14.2,
-      "D" : 6,
+      "As": 14.2
   },
   "6": {
       "Size": 6.00,
       "d": 6.00,
       "s": 10.00,
-      "As": 20.1,
-      "D" : 7,
+      "As": 20.1
   },
   "7": {
       "Size": 7.00,
       "d": 7.00,
       "s": 11.00,
-      "As": 28.9,
-      "D" : 8,
+      "As": 28.9
   },
   "8": {
       "Size": 8.0,
       "d": 8.00,
       "s": 13.00,
       "As": 36.60,
-      "D" : 9,
   },
   "10": {
       "Size": 10.00,
       "d": 10.00,
       "s": 16.00,
       "As": 58.0,
-      "D" : 11,
   },
 
   "12": {
       "Size": 12.00,
       "d": 12.00,
       "s": 18.00,
-      "As": 84.30,
-      "D" : 13,
+      "As": 84.30
   },
   "14": {
       "Size": 14.00,
       "d": 14.00,
       "s": 21.00,
-      "As": 115.00,
-      "D" : 15,
+      "As": 115.00
   },
   "16": {
       "Size": 16.00,
       "d": 16.00,
       "s": 24.00,
-      "As": 157.00,
-      "D" : 18,
+      "As": 157.00
   },
   "18": {
       "Size": 18.00,
       "d": 18.00,
       "s": 27.00,
-      "As": 192.00,
-      "D" : 20,
+      "As": 192.00
   },
   "20": {
       "Size": 20.00,
       "d": 20.00,
       "s": 30.00,
-      "As": 245.00,
-      "D" : 22,
+      "As": 245.00
   },
   "22": {
       "Size": 22.00,
       "d": 22.00,
       "s": 34.00,
-      "As": 303.00,
-      "D" : 24,
+      "As": 303.00
   },
   "24": {
       "Size": 24.00,
       "d": 24.00,
       "s": 36.00,
-      "As": 353.00,
-      "D" : 26,
+      "As": 353.00
   },
   "27": {
       "Size": 27.00,
       "d": 27.00,
       "s": 41.00,
-      "As": 459.00,
-      "D" : 30,
+      "As": 459.00
   },
   "30": {
       "Size": 30.00,
       "d": 30.00,
       "s": 46.00,
-      "As": 561.00,
-      "D" : 33,
+      "As": 561.00
   },
   "33": {
       "Size": 33,
       "d": 33,
       "s": 50,
-      "As": 694,
-      "D" : 36,
+      "As": 694
   },
   "36": {
       "Size": 36,
       "d": 36,
       "s": 55,
-      "As": 817,
-      "D" : 39,
+      "As": 817
   },
   "39": {
       "Size": 39,
       "d": 39,
       "s": 60,
-      "As": 976,
-      "D" : 42,
+      "As": 976
   }
 };
 
@@ -147,10 +130,6 @@ const calculations = {
       SfFt : calculations.SfFt(inputs),
       SfBp : calculations.SfBp(inputs),
       SfFvFt : calculations.SfFvFt(inputs),
-
-      fub : calculations.fub(inputs),
-
-   
       
     }
   }, // NE PAS OUBLIER LA VIRGULE
@@ -163,12 +142,12 @@ const calculations = {
 
     } = inputs;
 
-    if (BoltClass == 1 || BoltClass == 3 || BoltClass == 6 ) {
+    if (BoltClass == 1 ) {
       return 0.6;
 
     }
     
-    if (BoltClass == 2 || BoltClass == 4  || BoltClass == 5 || BoltClass == 7  ) {
+    if (BoltClass == 2 ) {
       return 0.5;
 
     }
@@ -179,14 +158,13 @@ const calculations = {
      LocationType,
      eTwo,
      pTwo,
-     // D, 
+     D, 
 
     } = inputs;
 
     
     // LocationType == 1 for Edge Bolts
     // LocationType == 2 for Inner Bolts
-    const D = calculations.D(inputs);
     
     if (LocationType == 1 ) {
       return (Math.min(2.8*eTwo/D-1.7,1.4*pTwo/D-1.7,2.5));
@@ -226,12 +204,12 @@ const calculations = {
 
   alphaB: (inputs) => {
     const {
+     fub,
      fu,
 
     } = inputs;
 
     const alphaD = calculations.alphaD(inputs);
-    const fub = calculations.fub(inputs);
 
     return  (Math.min(alphaD,fub/fu,1));
   
@@ -243,7 +221,7 @@ const calculations = {
      d
     } = inputs;
 
-    return  Data[d]["D"];
+    return  (d+2);
   
   }, // NE PAS OUBLIER LA VIRGULE
   
@@ -268,13 +246,13 @@ const calculations = {
 
   FvRd: (inputs) => {
     const {
+      fub,
       GammaTwo,
     } = inputs;
 
     const As = calculations.As(inputs); 
     const alphaV = calculations.alphaV(inputs); 
-    const fub = calculations.fub(inputs);
-
+    
     return (alphaV*fub*As/GammaTwo/1000);
   }, // NE PAS OUBLIER LA VIRGULE
 
@@ -282,11 +260,11 @@ const calculations = {
   FtRd: (inputs) => {
     const {
       kTwo,
+      fub,
       GammaTwo,
     } = inputs;
 
     const As = calculations.As(inputs); 
-    const fub = calculations.fub(inputs);
 
     return kTwo*fub*As/GammaTwo/1000;
   }, // NE PAS OUBLIER LA VIRGULE
@@ -297,14 +275,13 @@ const calculations = {
       fu,
       d,
       tp,
-      GammaTwo,
       
     } = inputs;
 
     const kOne = calculations.kOne(inputs);
     const alphaB = calculations.alphaB(inputs);
 
-    return (kOne*alphaB*fu*d*tp/GammaTwo/1000);
+    return (kOne*alphaB*fu*d*tp/1000);
   }, // NE PAS OUBLIER LA VIRGULE
 
   BpRd: (inputs) => {
@@ -371,38 +348,8 @@ const calculations = {
 
     return (FvEd/FvRd + FtEd/(1.4*FtRd));
   }, // NE PAS OUBLIER LA VIRGULE
-
   
-  fub: (inputs) => {
-    const {
-      BoltClass
-    } = inputs;
-
-    if (BoltClass == 1 || BoltClass == 2  ) {
-      return (400);
-
-    }
-
-    if (BoltClass == 3 || BoltClass == 4 ) {
-      return (500);
-    }
-
-    if (BoltClass == 5) {
-      return (600);
-    }
-    
-    if (BoltClass == 6) {
-      return (800);
-    }
-    
-    
-    if (BoltClass == 7) {
-      return (1000);
-    }
-  }, // NE PAS OUBLIER LA VIRGULE
 
 }
-
-
 
 export default calculations;
