@@ -26,3 +26,8 @@
   min-width: 3em;
   max-width: 6em;
 }
+
+.side-by-side {
+  display: flex;
+  flex-direction: row;
+}

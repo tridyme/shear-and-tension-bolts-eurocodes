@@ -24,10 +24,10 @@ import ChartElem from '../../Components/ChartElem';
 import calculations from './calculations';
 import MathJax from 'react-mathjax';
 import { makeStyles } from '@material-ui/core/styles';
+import NumberFormat from 'react-number-format';
 
 
-
-function SectionAnalysis() {
+function BoltAnalysis() {
   const [values, setValues] = useState({
     
     // Geometry 
@@ -147,10 +147,16 @@ function SectionAnalysis() {
  
 
   return (
-    <Grid container spacing={0} style={{display:'flex',justifyContent:'left',alignItems:'left'}}>
+    <Grid container spacing={0} style={{display:'flex',justifyContent:'left',alignItems:'left'}}>  
       
-      
+      <Grid item md={12} style={{display:'flex',justifyContent:'left',alignItems:'left'}}> 
+      <img src="/images/header-texte.png" alt = "" width= "1000px"/>
+      </Grid>
+      <Grid item md={12}  style={{display:'flex',justifyContent:'center',alignItems:'center'}}> 
+      <img src="/images/image-entraxes-des-fixations.svg" alt = "" width= "500px"/>
+      </Grid>
       <CardElem>
+      
       <Grid item md={12}> 
       <Tabs value={tabIndex} onChange={handleTabChange} variant="fullWidth" 
        TabIndicatorProps={{style: {background:'blue'}}}> 
@@ -488,7 +494,7 @@ function SectionAnalysis() {
             style={{height: '48px', width: '100%', justifyContent: 'center'}}
           />
         </Grid>
-          <Grid item md = {xTwo} xs = {4} > 
+          <Grid item md = {xTwo} xs = {4} >
             <InputElem
               value={values.GammaTwo}
               onChange={handleChangeValues('GammaTwo')}
@@ -725,7 +731,7 @@ function SectionAnalysis() {
           <Grid item md ={xOne} xs = {4}   style={{ backgroundColor: '#e0e0e0' , display: "flex"}} >
           <TextField
             variant="outlined"
-            defaultValue={"Diameter of the bolt hole : D "}
+            defaultValue={"Diameter of the bolt hole : d0 "}
             inputProps={{readOnly : true, style: {textAlign: 'left' }, }}
             style={{height: '48px', width: '100%', justifyContent: 'center'}}
           />
@@ -1167,5 +1173,5 @@ function SectionAnalysis() {
   );
 }
 
-export default SectionAnalysis;
+export default BoltAnalysis;
 

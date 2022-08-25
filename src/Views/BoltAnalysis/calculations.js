@@ -188,6 +188,14 @@ const calculations = {
     // LocationType == 2 for Inner Bolts
     const D = calculations.D(inputs);
     
+    if (LocationType == 1 && pTwo == 0 ) {
+      return (Math.min(2.8*eTwo/D-1.7,2.5));
+    }
+
+    if (LocationType == 2 && pTwo == 0 ) {
+      return (Math.min(2.8*eTwo/D-1.7,2.5));
+    }
+
     if (LocationType == 1 ) {
       return (Math.min(2.8*eTwo/D-1.7,1.4*pTwo/D-1.7,2.5));
     }
@@ -213,6 +221,14 @@ const calculations = {
 
     const D = calculations.D(inputs);
 
+    if (LocationType == 2 && pOne == 0 ) {
+      return (eOne/(3*D));
+    }
+
+    if (LocationType == 1 && pOne == 0 ) {
+      return (eOne/(3*D));
+    }
+
     if (LocationType == 1 ) {
       return (eOne/(3*D));
 
@@ -222,6 +238,7 @@ const calculations = {
       return (pOne/(3*D)-1/4);
     }
 
+  
   }, // NE PAS OUBLIER LA VIRGULE
 
   alphaB: (inputs) => {
