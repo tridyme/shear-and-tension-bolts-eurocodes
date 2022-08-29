@@ -142,6 +142,16 @@ export default function PersistentDrawerLeft({
 						</a>
           ))}
         </List>
+        <List>
+          {menu.MenuSideBarNotion.map((item, index) => (
+            <a href={item.href} target='_blank' style={{ textDecoration: 'none' }}>
+							<ListItem button key={index}>
+								<ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
+								<ListItemText primary={item.text} />
+							</ListItem>
+						</a>
+          ))}
+        </List>
       </Drawer>
       <main
         className={clsx(classes.content, {

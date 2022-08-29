@@ -8,8 +8,12 @@ import {
   FormControl,
   TextField,
   OutlinedInput,
+  Box,
+  Grid,
+  Typography,
 } from '@material-ui/core';
 import ToolTips from '../ToolTips';
+import NumberFormat from 'react-number-format';
 // import './InputElem.css';
 
 const useStyles = makeStyles(theme => ({
@@ -54,7 +58,9 @@ const InputElem = ({
   
   return (
     <div className={classes.root}>
-      
+   
+      <Grid container  item spacing={2} alignContent ="center" alignItems='center' >
+      <Grid item xs={9}>
       <FormControl
         
         className={clsx(classes.margin, classes.withoutLabel, classes.textField,)}
@@ -62,32 +68,28 @@ const InputElem = ({
       >
         
         <InputLabel htmlFor="outlined-adornment-amount">{description}</InputLabel>
-        <OutlinedInput
-          
+
+
+        
+        <NumberFormat 
+          customInput={TextField}
+          variant="outlined"
+          inputProps={{style: { textAlign: 'center', }}}
           className={onChange && classes.input}
           value={value}
           classes={{input: classes.input}}
-        
-      
           
-          startAdornment={text &&
-            <InputAdornment
-              position="start"
-              className={classes.inputAdornment}
-            >
-              {text}
-              {(text && description) &&
-                <ToolTips
-                  description={description}
-                  target={text}
-                />
-              }
-            </InputAdornment>}
-          endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
-          onChange={onChange}
-        />
         
+          onChange={onChange}
+  
+        />
       </FormControl>
+      </Grid>
+      <Grid item xs={3} > 
+      <Typography >{unit}</Typography>
+      </Grid>
+      </Grid>
+
     </div>
   );
 };

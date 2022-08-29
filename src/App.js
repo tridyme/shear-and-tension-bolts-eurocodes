@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core';
 import Icon from './Icon.png';
 import Logo from './Logo.png';
-import SectionAnalysis from './Views/SectionAnalysis/SectionAnalysis';
+import BoltAnalysis from './Views/BoltAnalysis/BoltAnalysis';
 
 const Menu = {
   MenuNavBar: [
@@ -29,9 +29,17 @@ const Menu = {
     { text: "Home", link: "/home", href: "", icon: "dashboard" },
   ],
   MenuSideBarInf: [
-    // { text: "Documentation", link: "", href: "https://www.tridyme.com/fr/documentation/fr/developpers/tridyme-webapp-kit-serverless", icon: "chrome_reader_mode" },
-    { text: "GitHub", link: "", href: "https://github.com/Igor-TriDyme/bolts-app.git", icon: "code" }
-  ]
+   
+    { text: "GitHub", link: "", href: "https://github.com/Igor-TriDyme/bolts-app.git", icon: "code" },
+  ],
+
+  
+  MenuSideBarNotion: [
+   
+    { text: "Documentation", link: "", href: "https://www.notion.so/Documentation-Technique-685a1bd160bb44ca86e7fa782b75276e", icon: "code" },
+  ],
+
+
 };
 
 const App = () => {
@@ -72,17 +80,17 @@ const App = () => {
             title={<ListItem>
               <ListItemAvatar>
                 <Avatar
-                  alt={`TriDyme - Bolt analyis app`}
+                  alt={`TriDyme - BoltCalc app`}
                   src={Icon}
                 />
               </ListItemAvatar>
-              <ListItemText primary={`TriDyme - Bolt analyis app`} />
+              <ListItemText primary={`TriDyme - BoltCalc app`} />
             </ListItem>}
             menu={Menu}
           >
             <Switch>
-              <Route exact path="/" component={SectionAnalysis} />
-              <Route exact path="/home" component={SectionAnalysis} />
+              <Route exact path="/" component={BoltAnalysis} />
+              <Route exact path="/home" component={BoltAnalysis} />
             </Switch>
           </AppContainerElem>
         </Router>
