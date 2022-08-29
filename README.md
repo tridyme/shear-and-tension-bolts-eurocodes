@@ -9,7 +9,7 @@
 **Shear and Tension Bolts at Eurocodes** is a web application for the design of non-preloaded bolts under shear and/or tension stress based on Eurocode 3.
 
 - Link to the Application: https://shear-and-tension-bolts-eurocodes.tridyme.com
-- Link to the documentation: https://www.notion.so/BoltCalc-8f00083eb39d4c8a9294c041f42a569c
+- Link to the documentation: https://www.notion.so/Shear-and-Tension-Bolts-at-Eurocodes-8f00083eb39d4c8a9294c041f42a569c
 
 This application was built with <a href="https://github.com/tridyme/sdk-structure-app" target="_blank">sdk-structure-app</a>. This opensource SDK developped by <a href="https://www.tridyme.com/fr/" target="_blank">TriDyme</a> in order to help Structural Engineer to develop their own Web Application without any cost.
 
