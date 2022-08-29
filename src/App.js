@@ -8,7 +8,7 @@ import {
 import './App.css';
 import history from './history';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { ThemeProvider, createMuiTheme,} from '@material-ui/core/styles';
+import { ThemeProvider, createMuiTheme, } from '@material-ui/core/styles';
 import AppContainerElem from './Components/AppContainerElem';
 import {
   ListItem,
@@ -29,13 +29,13 @@ const Menu = {
     { text: "Home", link: "/home", href: "", icon: "dashboard" },
   ],
   MenuSideBarInf: [
-   
+
     { text: "GitHub", link: "", href: "https://github.com/Igor-TriDyme/bolts-app.git", icon: "code" },
   ],
 
-  
+
   MenuSideBarNotion: [
-   
+
     { text: "Documentation", link: "", href: "https://www.notion.so/Documentation-Technique-685a1bd160bb44ca86e7fa782b75276e", icon: "code" },
   ],
 
@@ -62,14 +62,14 @@ const App = () => {
             //contrastText: '#ffcc00',
           },
         },
-        
+
       }),
     [prefersDarkMode],
   );
 
   return (
     <div>
-        
+
       <ThemeProvider theme={theme}>
         <Helmet>
           <title>{`TriDyme | Applications`}</title>
@@ -80,11 +80,11 @@ const App = () => {
             title={<ListItem>
               <ListItemAvatar>
                 <Avatar
-                  alt={`TriDyme - BoltCalc app`}
+                  alt={`TriDyme | Shear and Tension Bolts at Eurocodes`}
                   src={Icon}
                 />
               </ListItemAvatar>
-              <ListItemText primary={`TriDyme - BoltCalc app`} />
+              <ListItemText primary={`TriDyme | Shear and Tension Bolts at Eurocodes`} />
             </ListItem>}
             menu={Menu}
           >
@@ -95,10 +95,10 @@ const App = () => {
           </AppContainerElem>
         </Router>
       </ThemeProvider>
-   </div>
-   
+    </div>
+
   );
-  
+
 };
 
 export default App;
