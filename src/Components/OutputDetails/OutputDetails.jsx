@@ -15,9 +15,8 @@ import ToolTips from '../ToolTips';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
-    background: '#e0e0e0',
-    
+    flexWrap: 'wrap'
+
   },
   margin: {
     margin: theme.spacing(1),
@@ -29,9 +28,9 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     color: 'black',
-    textAlign: "center", 
-    backgroundColor: "#e0e0e0",
-    
+    textAlign: "center",
+    // backgroundColor: "#e0e0e0",
+
 
   },
   inputAdornment: {
@@ -39,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     color: 'black'
   },
 
- 
+
 }));
 
 const OutputDetails = ({
@@ -50,23 +49,19 @@ const OutputDetails = ({
   onChange
 }) => {
   const classes = useStyles();
-  
+
   return (
     <div className={classes.root}>
-      
+
       <FormControl
-        
         className={clsx(classes.margin, classes.withoutLabel, classes.textField,)}
-        
       >
-        
+
         <InputLabel htmlFor="outlined-adornment-amount">{description}</InputLabel>
         <OutlinedInput
-          
           className={onChange && classes.input}
           value={value}
-          classes={{input: classes.input}}
-          
+          classes={{ input: classes.input }}
           startAdornment={text &&
             <InputAdornment
               position="start"
@@ -83,7 +78,7 @@ const OutputDetails = ({
           endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
           onChange={onChange}
         />
-        
+
       </FormControl>
     </div>
   );

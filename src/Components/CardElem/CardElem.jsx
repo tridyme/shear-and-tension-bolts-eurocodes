@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
+import {
 	Card,
 	CardHeader,
 	CardActions,
@@ -12,33 +12,33 @@ import {
 const useStyles = makeStyles(theme => ({
 
 
-  card: {
+	card: {
 		// minWidth: 175,
 		textDecoration: 'none',
 		margin: theme.spacing(2),
-		flex : 1 ,
-	
+		flex: 1,
+		backgroundColor: 'white'
 	},
 	link: {
 		textDecoration: 'none'
 	},
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.5)',
-  },
-  title: {
+	bullet: {
+		display: 'inline-block',
+		margin: '0 2px',
+		transform: 'scale(0.5)',
+	},
+	title: {
 		fontSize: 23,
 		// color: 'blue'
-  },
-  pos: {
-    marginBottom: 12,
+	},
+	pos: {
+		marginBottom: 12,
 	},
 	badge: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
+		'& > *': {
+			margin: theme.spacing(1),
+		},
+	},
 
 
 }));
@@ -53,7 +53,6 @@ const CardElem = ({
 		<Card
 			className={classes.card}
 			elevation={3}
-			style={{backgroundColor: '#e0e0e0'}}
 		>
 			<CardHeader
 				// action={

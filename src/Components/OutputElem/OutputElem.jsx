@@ -15,8 +15,7 @@ import Alert from '@material-ui/lab/Alert';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
-    background: '#e0e0e0',
+    flexWrap: 'wrap'
   },
   margin: {
     margin: theme.spacing(1),
@@ -26,19 +25,19 @@ const useStyles = makeStyles(theme => ({
   },
   textField: {
     width: '100%',
-    
+
   },
   input: {
     color: 'red',
     backgroundColor: "#e0e0e0",
-    textAlign: "center", 
-    fontWeight: 600, 
+    textAlign: "center",
+    fontWeight: 600,
   },
 
   inputTwo: {
     color: 'green',
     backgroundColor: "#e0e0e0",
-    textAlign: "center", 
+    textAlign: "center",
     fontWeight: 600,
     // backgroundColor: 'lightblue'
   },
@@ -58,26 +57,26 @@ const OutputElem = ({
   onChange
 }) => {
   const classes = useStyles();
-  
+
   let isMoreThanOne = false
 
   value > 1 ? (isMoreThanOne = true) : (isMoreThanOne = false)
-  
+
   return (
     <div className={classes.root}>
-      
+
       <FormControl
-        
+
         className={clsx(classes.input, classes.margin, classes.withoutLabel, classes.textField,)}
-        
+
       >
-        
+
         <InputLabel htmlFor="outlined-adornment-amount">{description}</InputLabel>
         <OutlinedInput
-         
+
           className={onChange && classes.input}
           value={value}
-          classes={isMoreThanOne ? ({input: classes.input}):({input: classes.inputTwo})}
+          classes={isMoreThanOne ? ({ input: classes.input }) : ({ input: classes.inputTwo })}
           startAdornment={text &&
             <InputAdornment
               position="start"
@@ -93,12 +92,12 @@ const OutputElem = ({
             </InputAdornment>}
           endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
           onChange={onChange}
-        /> 
+        />
       </FormControl>
-     
+
     </div>
-    
-  
+
+
 
 
   );

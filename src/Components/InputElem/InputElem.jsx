@@ -19,9 +19,8 @@ import NumberFormat from 'react-number-format';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
-    background: '#e0e0e0',
-    
+    flexWrap: 'wrap'
+
   },
   margin: {
     margin: theme.spacing(1),
@@ -33,9 +32,9 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     color: 'black',
-    textAlign: "center", 
+    textAlign: "center",
     backgroundColor: "white",
-    
+
 
   },
   inputAdornment: {
@@ -43,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     color: 'black'
   },
 
- 
+
 }));
 
 const InputElem = ({
@@ -52,42 +51,42 @@ const InputElem = ({
   value,
   unit,
   onChange,
- 
+
 }) => {
   const classes = useStyles();
-  
+
   return (
     <div className={classes.root}>
-   
-      <Grid container  item spacing={2} alignContent ="center" alignItems='center' >
-      <Grid item xs={9}>
-      <FormControl
-        
-        className={clsx(classes.margin, classes.withoutLabel, classes.textField,)}
-        
-      >
-        
-        <InputLabel htmlFor="outlined-adornment-amount">{description}</InputLabel>
+
+      <Grid container item spacing={2} alignContent="center" alignItems='center' >
+        <Grid item xs={9}>
+          <FormControl
+
+            className={clsx(classes.margin, classes.withoutLabel, classes.textField,)}
+
+          >
+
+            <InputLabel htmlFor="outlined-adornment-amount">{description}</InputLabel>
 
 
-        
-        <NumberFormat 
-          customInput={TextField}
-          variant="outlined"
-          inputProps={{style: { textAlign: 'center', }}}
-          className={onChange && classes.input}
-          value={value}
-          classes={{input: classes.input}}
-          
-        
-          onChange={onChange}
-  
-        />
-      </FormControl>
-      </Grid>
-      <Grid item xs={3} > 
-      <Typography >{unit}</Typography>
-      </Grid>
+
+            <NumberFormat
+              customInput={TextField}
+              variant="outlined"
+              inputProps={{ style: { textAlign: 'center', } }}
+              className={onChange && classes.input}
+              value={value}
+              classes={{ input: classes.input }}
+
+
+              onChange={onChange}
+
+            />
+          </FormControl>
+        </Grid>
+        <Grid item xs={3} >
+          <Typography >{unit}</Typography>
+        </Grid>
       </Grid>
 
     </div>

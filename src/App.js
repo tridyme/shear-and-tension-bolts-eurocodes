@@ -26,11 +26,11 @@ const Menu = {
     { text: "", link: "", href: "", icon: "" }
   ],
   MenuSideBarSup: [
-    { text: "Home", link: "/home", href: "", icon: "dashboard" },
+    { text: "Home", link: "/shear-and-tension-bolts-eurocodes", href: "", icon: "dashboard" },
   ],
   MenuSideBarInf: [
 
-    { text: "GitHub", link: "", href: "https://github.com/Igor-TriDyme/bolts-app.git", icon: "code" },
+    { text: "GitHub", link: "", href: "https://github.com/tridyme/shear-and-tension-bolts-eurocodes", icon: "code" },
   ],
 
 
@@ -89,7 +89,7 @@ const App = () => {
             menu={Menu}
           >
             <Switch>
-              <Route exact path="/" component={BoltAnalysis} />
+              <Route exact path="/shear-and-tension-bolts-eurocodes" component={BoltAnalysis} />
               <Route exact path="/home" component={BoltAnalysis} />
             </Switch>
           </AppContainerElem>
