@@ -11,7 +11,7 @@ import {
   IconButton,
   ListItem,
   ListItemIcon,
-	ListItemText,
+  ListItemText,
   Typography,
   Icon
 } from '@material-ui/core';
@@ -81,9 +81,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PersistentDrawerLeft({
-	title,
-	menu,
-	children
+  title,
+  menu,
+  children
 }) {
   const classes = useStyles();
   const theme = useTheme();
@@ -100,12 +100,12 @@ export default function PersistentDrawerLeft({
   return (
     <div className={classes.root}>
       <CssBaseline />
-			<NavBarElem 
-				title={title}
-				classes={classes}
-				handleDrawerOpen={handleDrawerOpen}
-				open={open}
-			/>
+      <NavBarElem
+        title={title}
+        classes={classes}
+        handleDrawerOpen={handleDrawerOpen}
+        open={open}
+      />
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -123,33 +123,34 @@ export default function PersistentDrawerLeft({
         <Divider />
         <List>
           {menu.MenuSideBarSup.map((item, index) => (
-            <Link to={item.link} style={{ textDecoration: 'none' }}>
-							<ListItem button key={index}>
-								<ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
-								<ListItemText primary={item.text} />
-							</ListItem>
-						</Link>
+            <>
+              {item.link === "" ?
+                <a href={item.href} style={{ textDecoration: 'none' }}>
+                  <ListItem button key={index}>
+                    <ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </ListItem>
+                </a>
+                :
+                <Link to={item.link} style={{ textDecoration: 'none' }}>
+                  <ListItem button key={index}>
+                    <ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </ListItem>
+                </Link>
+              }
+            </>
           ))}
         </List>
         <Divider />
         <List>
           {menu.MenuSideBarInf.map((item, index) => (
             <a href={item.href} target='_blank' style={{ textDecoration: 'none' }}>
-							<ListItem button key={index}>
-								<ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
-								<ListItemText primary={item.text} />
-							</ListItem>
-						</a>
-          ))}
-        </List>
-        <List>
-          {menu.MenuSideBarNotion.map((item, index) => (
-            <a href={item.href} target='_blank' style={{ textDecoration: 'none' }}>
-							<ListItem button key={index}>
-								<ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
-								<ListItemText primary={item.text} />
-							</ListItem>
-						</a>
+              <ListItem button key={index}>
+                <ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            </a>
           ))}
         </List>
       </Drawer>
@@ -159,9 +160,9 @@ export default function PersistentDrawerLeft({
         })}
       >
         <div className={classes.drawerHeader} />
-				<Container maxWidth="lg" className={classes.container}>
-					{children}
-				</Container>
+        <Container maxWidth="lg" className={classes.container}>
+          {children}
+        </Container>
       </main>
     </div>
   );

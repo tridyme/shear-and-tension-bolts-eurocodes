@@ -143,22 +143,20 @@ function BoltAnalysis() {
 
   const xThree = 3;
 
-
-
-
   return (
     <Grid container spacing={0} style={{ display: 'flex', justifyContent: 'left', alignItems: 'left' }}>
 
-      <Grid item xs={12} style={{ marginTop: "2em" }}>
-        <Typography variant="h3" component="h2">Verification of bolts under shear and/or tension stress</Typography>
-        <Typography variant="h5" component="h3">According to: EN 1993-1-8:2005 Section 3.8</Typography>
-        <Typography variant="h5" component="h3">National annexe: NF EN 1993-1-8/NA - July 2007</Typography>
-      </Grid>
-      <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <img src="/images/image-entraxes-des-fixations.svg" alt="" width="500px" />
-      </Grid>
       <CardElem>
-
+        <Grid item md={12}>
+          <Grid item xs={12}>
+            <Typography variant="h3" component="h2">Verification of bolts under shear and/or tension stress</Typography>
+            <Typography variant="h5" component="h3">According to: EN 1993-1-8:2005 Section 3.8</Typography>
+            <Typography variant="h5" component="h3">National annexe: NF EN 1993-1-8/NA - July 2007</Typography>
+          </Grid>
+          <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <img src="/images/image-entraxes-des-fixations.svg" alt="" width="500px" />
+          </Grid>
+        </Grid>
         <Grid item md={12}>
           <Tabs value={tabIndex} onChange={handleTabChange} variant="fullWidth"
             TabIndicatorProps={{ style: { background: 'blue' } }}>
@@ -170,16 +168,9 @@ function BoltAnalysis() {
         </Grid>
         <Grid item md={12}>
           {tabIndex === 0 && (
-
-
-
-            <Grid item md={12}
-            >
-              <CardElem
-
-              >
-                <Grid container={true} alignItems="center"
-                >
+            <Grid item md={12} >
+              <CardElem>
+                <Grid container={true} alignItems="center" >
                   <Grid item md={xOne} xs={4} style={{ backgroundColor: 'white', display: "flex" }} >
                     <TextField
                       variant="outlined"
@@ -187,13 +178,11 @@ function BoltAnalysis() {
                       inputProps={{ readOnly: true, style: { textAlign: 'left' }, }}
                       style={{ width: '100%', justifyContent: 'center' }}
                     />
-
                   </Grid>
 
-                  <Grid item md={xTwo} xs={4}  >
+                  <Grid item md={xTwo} xs={4} >
 
                     <InputElem
-
                       value={values.eOne}
                       // text={'e1'}
                       // description={'Distance along load direction'}
